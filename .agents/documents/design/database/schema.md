@@ -8,7 +8,7 @@ Stores the main meeting data.
 ```dart
 @collection
 class MeetingNoteCollection {
-  Id id = Isar.autoIncrement;
+  Id id; // Integer ID mapped from UUID String via fastHash
 
   @Index(type: IndexType.value)
   late String title;
@@ -33,7 +33,7 @@ Stores extracted action items.
 ```dart
 @collection
 class ActionItemCollection {
-  Id id = Isar.autoIncrement;
+  Id id; // Integer ID mapped from UUID String via fastHash
 
   late String content;
   late bool isCompleted;
@@ -48,7 +48,7 @@ Stores extracted deadlines.
 ```dart
 @collection
 class DeadlineCollection {
-  Id id = Isar.autoIncrement;
+  Id id; // Integer ID mapped from UUID String via fastHash
 
   late String dateText;
   late String associatedText;

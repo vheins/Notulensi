@@ -66,7 +66,17 @@ This document specifies the user interactions and detailed functional behaviors 
 - **TXT Export**: Raw text file formatted as UTF-8.
 - **Share Sheet**: Standard Android/iOS sharing dialog.
 
-## 5. Error & Exception Handling
+## 5. STT Model Management
+**Trigger**: System checks capabilities before initiating a recording session.
+
+| State | Definition | UI Behavior |
+| :--- | :--- | :--- |
+| **Not Downloaded** | Offline STT model for the selected language is not present on the device. | Display prompt to download the language pack, directing the user to OS settings. Prevent recording. |
+| **Downloading** | The OS is currently downloading the required language pack. | Show a 'Downloading Language Model...' indicator. Disable the Record button until ready. |
+| **Ready** | Offline STT model is verified as downloaded and available. | Enable the Record button. Allow standard recording flow. |
+| **Failed** | Model initialization failed due to corruption, OS error, or unsupported device. | Show an error dialog explaining the issue with an option to retry or check settings. Prevent recording. |
+
+## 6. Error & Exception Handling
 - **Low Storage**: System displays a warning banner when device storage < 50MB and prevents new recording starts.
 - **Mic Busy**: Informative error dialog if another application is holding the audio focus.
 - **STT Failure**: If system STT fails or language pack is missing, user is guided to OS settings.
