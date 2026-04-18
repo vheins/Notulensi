@@ -29,7 +29,7 @@ Notulensi utilizes a **Feature-based Clean Architecture** to ensure high perform
 ```dart
 @collection
 class MeetingNoteCollection {
-  Id id = Isar.autoIncrement;
+  late String id; // UUID String-based Primary Key
   @Index(type: IndexType.value)
   late String title;
   late DateTime createdAt;
@@ -59,19 +59,26 @@ class MeetingNoteCollection {
 - **Storage Protection**: All audio files and database records are stored in the application's private directory (`get_application_documents_directory`).
 - **Data Exfiltration Prevention**: No analytics or error-reporting packages that transmit data (e.g., Firebase Analytics/Crashlytics).
 
-## 6. Implementation Milestones
+## 6. Test Architecture
+As part of the quality assurance strategy, Notulensi enforces a mandatory 4-concern test strategy:
+1. **Database Testing**: Verifies Isar schema interactions, CRUD operations, and transaction integrity.
+2. **Service Testing**: Mocks external dependencies (audio capture, OS STT) and validates pure business logic and mapping.
+3. **State Management Testing**: Tests `Cubit` / `Bloc` states in isolation to ensure predictable state transitions for complex UI interactions.
+4. **UI Testing**: Uses Flutter widget tests and integration tests to verify component rendering and end-to-end user flows.
 
-### 6.1 Phase 1: Core Infrastructure
+## 7. Implementation Milestones
+
+### 7.1 Phase 1: Core Infrastructure
 - Isar DB setup and generic repository.
 - Audio recording session management.
 - STT initialization and live-stream display.
 
-### 6.2 Phase 2: Feature Implementation
+### 7.2 Phase 2: Feature Implementation
 - Highlight extraction engine development.
 - Home screen dashboard and full-text search.
 - Note detail view and manual correction logic.
 
-### 6.3 Phase 3: Export & Polishing
+### 7.3 Phase 3: Export & Polishing
 - PDF/TXT export generation.
 - AdMob banner integration.
 - Storage management dashboard in Settings.
