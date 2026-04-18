@@ -29,7 +29,7 @@ Notulensi utilizes a **Feature-based Clean Architecture** to ensure high perform
 ```dart
 @collection
 class MeetingNoteCollection {
-  late String id; // UUID String-based Primary Key
+  Id id; // Integer ID mapped from UUID String via fastHash
   @Index(type: IndexType.value)
   late String title;
   late DateTime createdAt;
