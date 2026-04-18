@@ -17,7 +17,14 @@ The `feature_export` module enables the portability of meeting data by generatin
 - **US-013**: Export notes as TXT.
 - **US-014**: Export notes as PDF summary.
 
-## 5. Test Scenarios
+## 5. Test Architecture
+This module adheres to the mandatory 4-concern test strategy:
+- **Database Testing**: Verify fetching notes and highlights from Isar for export.
+- **Service Testing**: Mock document generation (PDF/TXT) and verify file output structure and content.
+- **State Management Testing**: Test state emissions during the generation and sharing process (e.g., preparing, ready, sharing, error).
+- **UI Testing**: Widget test for the share/export bottom sheet and error dialogs.
+
+## 6. Test Scenarios
 | Type | Scenario | Expected Result |
 | :--- | :--- | :--- |
 | **Positive** | Export PDF with 10 Action Items. | PDF is generated and contains all items. |
