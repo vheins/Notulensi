@@ -1,0 +1,6 @@
+interface:
+  display_name: "api-timeout-debugging"
+  short_description: "Diagnoses API timeouts, identifies slow components via tracing, and provides retry/timeout strategies. DO NOT use for network infrastructure, DB query optimization, or general profiling."
+
+policy:
+  allow_implicit_invocation: true

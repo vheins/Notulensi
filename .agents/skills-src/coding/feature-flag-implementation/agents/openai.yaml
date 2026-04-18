@@ -1,0 +1,11 @@
+interface:
+  display_name: "feature-flag-implementation"
+  short_description: "Implement a feature flag system for toggles, gradual rollout, and targeting. Do NOT use for configuration management, A/B test analytics, or infrastructure feature flags."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

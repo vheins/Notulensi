@@ -1,0 +1,3 @@
+display_name: "debugging-pipeline"
+short_description: "Use to diagnose, fix, and regression-test failures. Covers error analysis, root cause, fix, and regression testing. Do NOT use for new features or code review."
+allow_implicit_invocation: true

@@ -1,0 +1,14 @@
+interface:
+  display_name: "risk-assessment"
+  short_description: "Identify technical, operational, and business risks with mitigation strategies, scoring, and monitoring plans. Do NOT use for system design review, security vulnerability triage, or post-incident analysis."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

@@ -1,0 +1,6 @@
+interface:
+  display_name: "database-documentation"
+  short_description: "Generate comprehensive database schema documentation from SQL DDL, ORM models, or migrations. Covers tables, columns, constraints, indexes, and relationships. Do NOT use for query optimization, migration planning, or schema design advice."
+
+policy:
+  allow_implicit_invocation: true

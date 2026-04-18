@@ -1,0 +1,6 @@
+interface:
+  display_name: "user-flow-diagram-description"
+  short_description: "Produce a structured user journey description for visual flow diagrams (Excalidraw/draw.io). Not for wireframes or high-fidelity UI."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "null-pointer-undefined-analysis"
+  short_description: "Resolve null pointer exceptions, undefined reference errors, and "Cannot read property" errors with defensive patterns. Do NOT use for type system design, schema validation, or general error handling architecture."Cannot r..."
+
+policy:
+  allow_implicit_invocation: true

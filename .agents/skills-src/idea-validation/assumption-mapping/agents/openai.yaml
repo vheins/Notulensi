@@ -1,0 +1,6 @@
+interface:
+  display_name: "assumption-mapping"
+  short_description: "Identify and categorize key product assumptions by risk level and generate specific validation experiments. Do NOT use for hypothesis validation experiments, market sizing, or feasibility assessment."
+
+policy:
+  allow_implicit_invocation: true

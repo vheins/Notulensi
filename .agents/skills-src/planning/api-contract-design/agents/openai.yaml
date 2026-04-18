@@ -1,0 +1,11 @@
+interface:
+  display_name: "api-contract-design"
+  short_description: "Designs REST/GraphQL API contracts with endpoint definitions, schemas, error codes, auth requirements, and rate limiting. Do NOT use for API implementation, OpenAPI generation, or DB schema design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

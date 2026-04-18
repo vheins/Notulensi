@@ -1,0 +1,3 @@
+display_name: "update-documentation"
+short_description: "Keep documentation in sync when code changes. Detects gaps, updates docs, verifies consistency. Not for initial creation."
+allow_implicit_invocation: true

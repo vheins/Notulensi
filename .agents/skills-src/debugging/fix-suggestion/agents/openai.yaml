@@ -1,0 +1,14 @@
+interface:
+  display_name: "fix-suggestion"
+  short_description: "Provide a targeted, minimal fix for an identified bug with before/after code and a test case. Do NOT use for root cause analysis, architectural refactoring, or performance optimization."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

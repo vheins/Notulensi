@@ -1,0 +1,6 @@
+interface:
+  display_name: "navigation-structure-design"
+  short_description: "Produce a hierarchical navigation structure (site map) for apps. Includes route tree, access levels, and text-based site map for Excalidraw/draw.io. Not for wireframes or backend API design."
+
+policy:
+  allow_implicit_invocation: true

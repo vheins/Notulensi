@@ -1,0 +1,11 @@
+interface:
+  display_name: "deadlock-analysis"
+  short_description: "Analyze application hangs, thread deadlocks, and circular wait conditions. Do not use for race conditions or infinite loops."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

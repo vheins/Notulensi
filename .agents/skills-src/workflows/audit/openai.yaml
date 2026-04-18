@@ -1,0 +1,3 @@
+display_name: "audit"
+short_description: "Audit codebase against documentation, detect gaps, and reconcile to stay in sync. Not for fixing bugs or implementing new features."
+allow_implicit_invocation: true

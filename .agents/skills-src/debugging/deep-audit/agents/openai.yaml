@@ -1,0 +1,14 @@
+interface:
+  display_name: "deep-audit"
+  short_description: "Audits modules for architectural violations (layer separation, N+1 queries, inline logic, coding standards). Use before refactors or when code feels messy. Do NOT use for general bug fixes or new features."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

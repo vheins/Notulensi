@@ -1,0 +1,6 @@
+interface:
+  display_name: "api-documentation"
+  short_description: "Generate OpenAPI-compatible documentation for REST API endpoints (schemas, auth, parameters, error codes). Do NOT use for GraphQL, SDK reference docs, or architecture documentation."
+
+policy:
+  allow_implicit_invocation: true

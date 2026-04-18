@@ -1,0 +1,11 @@
+interface:
+  display_name: "monorepo-setup"
+  short_description: "Use to configure a monorepo with workspace tooling, shared packages, build pipeline, and CI optimization. Activate for setting up Turborepo, Nx, Lerna, or similar monorepo tooling for a multi-package project. Do NOT use for single-package project setup, CI/CD pipeline scripting, or Docker configuration."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

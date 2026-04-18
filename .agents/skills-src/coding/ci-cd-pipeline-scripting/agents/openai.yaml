@@ -1,0 +1,11 @@
+interface:
+  display_name: "ci-cd-pipeline-scripting"
+  short_description: "Use to generate a CI/CD pipeline configuration for building, testing, and deploying an application. Activate for GitHub Actions, GitLab CI, CircleCI, or similar pipeline tools for any tech stack. Do NOT use for infrastructure provisioning, Dockerfile creation, or deployment strategy design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

@@ -1,0 +1,14 @@
+interface:
+  display_name: "async-await-error-tracing"
+  short_description: "Debug async/await errors, unhandled promise rejections, and event loop blocking. Do not use for synchronous logic bugs or race conditions in concurrent systems."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

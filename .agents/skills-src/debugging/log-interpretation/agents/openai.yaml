@@ -1,0 +1,6 @@
+interface:
+  display_name: "log-interpretation"
+  short_description: "Identify anomalies, error patterns, timeline of events, and a root cause hypothesis from application log data. Do NOT use for real-time log streaming setup, log aggregation infrastructure design, or performance profiling."
+
+policy:
+  allow_implicit_invocation: true

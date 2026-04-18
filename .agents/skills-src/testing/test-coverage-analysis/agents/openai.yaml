@@ -1,0 +1,6 @@
+interface:
+  display_name: "test-coverage-analysis"
+  short_description: "Analyzes test coverage gaps and generates missing tests for uncovered code paths, branches, or conditions. Do NOT use for running coverage tools or interpreting reports."
+
+policy:
+  allow_implicit_invocation: true

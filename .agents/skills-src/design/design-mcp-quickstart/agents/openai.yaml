@@ -1,0 +1,6 @@
+interface:
+  display_name: "design-mcp-quickstart"
+  short_description: "Select, install, configure, and verify a design MCP tool (Figma, Excalidraw, draw.io, Google Stitch, Canva). Produces a tailored step-by-step setup guide. Not for generating actual design output."
+
+policy:
+  allow_implicit_invocation: true

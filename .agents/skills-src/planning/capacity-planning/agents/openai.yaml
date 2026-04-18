@@ -1,0 +1,11 @@
+interface:
+  display_name: "capacity-planning"
+  short_description: "Estimates infrastructure capacity based on load projections. DO NOT use for system design review, dev cost estimation, or DB schema planning."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

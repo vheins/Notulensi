@@ -1,0 +1,11 @@
+interface:
+  display_name: "brainstorm-feature"
+  short_description: "Produces a production-ready technical design for a feature (actors, invariants, state machine, data model, API) WITHOUT code. DO NOT use for writing code or sprint planning."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

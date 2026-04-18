@@ -1,0 +1,6 @@
+interface:
+  display_name: "mock-stub-generation"
+  short_description: "Use to generate mocks and stubs for external dependencies like APIs, databases, or third-party services in unit tests. Do NOT use for integration tests or E2E tests where real dependencies should be used."
+
+policy:
+  allow_implicit_invocation: true

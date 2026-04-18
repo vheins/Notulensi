@@ -1,0 +1,6 @@
+interface:
+  display_name: "release-notes-generation"
+  short_description: "Transform raw changelog entries or git commit history into polished, user-facing release notes. Do NOT use for internal developer changelogs, API reference updates, or sprint retrospectives."
+
+policy:
+  allow_implicit_invocation: true

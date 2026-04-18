@@ -1,0 +1,14 @@
+interface:
+  display_name: "microservices-boundary-definition"
+  short_description: "Define microservice boundaries using DDD principles, including responsibilities, contracts, data ownership, and migration strategy. Do NOT use for monolith decomposition planning, single service API design, or event storming."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

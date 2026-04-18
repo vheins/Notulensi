@@ -1,0 +1,6 @@
+interface:
+  display_name: "value-proposition-writing"
+  short_description: "Articulate a clear, structured value proposition using the standard positioning template. Do NOT use for feature planning, marketing copy, or landing page writing."
+
+policy:
+  allow_implicit_invocation: true

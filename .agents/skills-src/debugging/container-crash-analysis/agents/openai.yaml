@@ -1,0 +1,6 @@
+interface:
+  display_name: "container-crash-analysis"
+  short_description: "Analyzes crashing, restarting, or OOMKilled Docker/Kubernetes containers. Fixes crash causes. Do NOT use for deployment failures, app bugs, or infrastructure."
+
+policy:
+  allow_implicit_invocation: true

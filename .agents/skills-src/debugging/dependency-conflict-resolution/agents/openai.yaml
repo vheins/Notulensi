@@ -1,0 +1,14 @@
+interface:
+  display_name: "dependency-conflict-resolution"
+  short_description: "Resolves package version conflicts and peer dependency warnings. Do NOT use for security auditing, upgrade planning, or monorepo setup."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

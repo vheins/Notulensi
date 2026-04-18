@@ -1,0 +1,3 @@
+display_name: "idea-validation"
+short_description: "Use to validate a product idea before building. Covers problem, user, value prop, assumptions, feasibility, and MVP scope. Do NOT use for technical planning or implementation."
+allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "test-case-design"
+  short_description: "Designs comprehensive test cases from requirements using equivalence partitioning and boundary value analysis. Do NOT use for writing test code."
+
+policy:
+  allow_implicit_invocation: true

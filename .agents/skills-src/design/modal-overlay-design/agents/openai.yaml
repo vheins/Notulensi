@@ -1,0 +1,6 @@
+interface:
+  display_name: "modal-overlay-design"
+  short_description: "Provide complete specifications for modal overlays (dialogs, drawers, tooltips, popovers, bottom sheets). Covers triggers, content, dismiss behavior, animations, z-index, and accessibility. Not for non-overlay UI."
+
+policy:
+  allow_implicit_invocation: true

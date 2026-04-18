@@ -1,0 +1,6 @@
+interface:
+  display_name: "database-query-slow-analysis"
+  short_description: "Interprets EXPLAIN/EXPLAIN ANALYZE output to diagnose slow queries and recommend indexes or rewrites. Do NOT use for schema design or ORM configuration."
+
+policy:
+  allow_implicit_invocation: true

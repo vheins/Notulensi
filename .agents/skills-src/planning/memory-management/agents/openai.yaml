@@ -1,0 +1,14 @@
+interface:
+  display_name: "memory-management"
+  short_description: "Maintain a memory.md file tracking system state, architectural decisions, and project-wide rules. Activate after major tasks or architectural changes. Do NOT use for task status, sprint progress, or bug fixes."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

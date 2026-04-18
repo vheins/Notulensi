@@ -1,0 +1,6 @@
+interface:
+  display_name: "edge-case-identification"
+  short_description: "Use to identify boundary conditions, null inputs, empty collections, and failure scenarios for a given function or feature. Do NOT use for writing test code or general test case design."
+
+policy:
+  allow_implicit_invocation: true

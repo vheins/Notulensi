@@ -1,0 +1,11 @@
+interface:
+  display_name: "acceptance-criteria-writing"
+  short_description: "Writes EARS-format acceptance criteria for a user story. DO NOT use for generating user stories, test cases, or sprint goals."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

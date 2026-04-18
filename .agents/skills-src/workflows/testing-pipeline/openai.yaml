@@ -1,0 +1,3 @@
+display_name: "testing-pipeline"
+short_description: "Use to run unit, integration, E2E, and smoke tests plus QA for a feature. Do NOT use for writing new features or debugging."
+allow_implicit_invocation: true

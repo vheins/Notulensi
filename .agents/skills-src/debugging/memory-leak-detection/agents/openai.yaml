@@ -1,0 +1,11 @@
+interface:
+  display_name: "memory-leak-detection"
+  short_description: "Identify and fix memory leak patterns using profiling data and code analysis. Do NOT use for one-time high memory usage, OOM from large data processing, or general performance optimization."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

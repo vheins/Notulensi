@@ -1,0 +1,6 @@
+interface:
+  display_name: "troubleshooting-guide-creation"
+  short_description: "Use when a developer or ops team needs a structured troubleshooting guide for a system, covering common errors, symptoms, root causes, diagnostic steps, resolutions, and prevention. Do NOT use for setup guides, architecture documentation, or API reference generation."
+
+policy:
+  allow_implicit_invocation: true

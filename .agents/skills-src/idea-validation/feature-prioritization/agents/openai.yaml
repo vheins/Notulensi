@@ -1,0 +1,6 @@
+interface:
+  display_name: "feature-prioritization"
+  short_description: "Rank a list of features by impact and effort using MoSCoW categorization or RICE scoring. Do NOT use for MVP scope definition, competitor analysis, or sprint planning."
+
+policy:
+  allow_implicit_invocation: true

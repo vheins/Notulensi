@@ -1,0 +1,6 @@
+interface:
+  display_name: "design-system-specification"
+  short_description: "Generate complete design system specification documents covering all design tokens: color palette, typography scale, spacing scale, border radius, shadow/elevation levels, and responsive breakpoints. Output structures for CSS custom properties, Tailwind config, or design tokens JSON. Do NOT use for component inventories, wireframes, or user flow diagrams."
+
+policy:
+  allow_implicit_invocation: true

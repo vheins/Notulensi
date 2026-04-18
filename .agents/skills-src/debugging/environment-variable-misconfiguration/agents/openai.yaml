@@ -1,0 +1,6 @@
+interface:
+  display_name: "environment-variable-misconfiguration"
+  short_description: "Diagnoses and fixes missing, incorrect, or misloaded environment variables. Do NOT use for secrets management architecture, infrastructure provisioning, or CI/CD design."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "screen-wireframe-generation"
+  short_description: "Produce a structured wireframe (ASCII/text) for a screen. Not for high-fidelity mockups or UI code."
+
+policy:
+  allow_implicit_invocation: true

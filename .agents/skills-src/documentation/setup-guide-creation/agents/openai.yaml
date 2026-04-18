@@ -1,0 +1,6 @@
+interface:
+  display_name: "setup-guide-creation"
+  short_description: "Produce a complete, step-by-step developer setup guide covering prerequisites, installation, environment configuration, and verification. Do NOT use for architecture documentation, API reference generation, or deployment runbooks."
+
+policy:
+  allow_implicit_invocation: true

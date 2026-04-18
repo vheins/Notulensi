@@ -1,0 +1,6 @@
+interface:
+  display_name: "property-based-test-generation"
+  short_description: "Generates property-based tests with generators to verify universal correctness properties. Do NOT use for example-based unit tests or integration tests."
+
+policy:
+  allow_implicit_invocation: true

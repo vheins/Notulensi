@@ -1,0 +1,11 @@
+interface:
+  display_name: "sla-slo-definition"
+  short_description: "Define SLI/SLO/SLA targets, error budgets, alerting thresholds, and escalation policies. Do NOT use for capacity planning, design reviews, or postmortems."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

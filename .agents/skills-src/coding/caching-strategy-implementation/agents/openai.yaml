@@ -1,0 +1,11 @@
+interface:
+  display_name: "caching-strategy-implementation"
+  short_description: "Use to design and implement a caching layer for data that is expensive to compute or fetch. Activate for cache-aside, write-through, or write-behind patterns, TTL strategy, and cache invalidation logic. Do NOT use for database query optimization, CDN configuration, or HTTP response caching headers."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

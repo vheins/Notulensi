@@ -1,0 +1,14 @@
+interface:
+  display_name: "architecture-planning"
+  short_description: "Produces a system architecture overview (components, data flow, tech rationale, scalability). DO NOT use for single-feature, DB schema, or API design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

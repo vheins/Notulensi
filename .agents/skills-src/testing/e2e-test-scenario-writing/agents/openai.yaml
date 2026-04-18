@@ -1,0 +1,6 @@
+interface:
+  display_name: "e2e-test-scenario-writing"
+  short_description: "Generates end-to-end test scenarios for critical user journeys using Playwright, Cypress, or Selenium. Do NOT use for unit tests, integration tests, or API testing."
+
+policy:
+  allow_implicit_invocation: true

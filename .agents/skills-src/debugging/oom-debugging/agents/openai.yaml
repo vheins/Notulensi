@@ -1,0 +1,11 @@
+interface:
+  display_name: "oom-debugging"
+  short_description: "Analyze heap dumps or memory metrics to identify and fix out-of-memory errors. Do NOT use for container OOMKilled events, active memory leak detection, or performance optimization."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

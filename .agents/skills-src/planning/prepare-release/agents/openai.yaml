@@ -1,0 +1,11 @@
+interface:
+  display_name: "prepare-release"
+  short_description: "Package completed work into a releasable version. Generates changelogs, bumps versions, runs tests, and creates git tags. Activate when milestones complete. Do NOT use for hotfixes."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

@@ -1,0 +1,6 @@
+interface:
+  display_name: "mobile-first-ui-specification"
+  short_description: "Produce a complete mobile-first UI specification (touch targets, thumb-zones, safe areas, gestures, platform conventions). Not for desktop-only layouts or non-interactive screens."
+
+policy:
+  allow_implicit_invocation: true

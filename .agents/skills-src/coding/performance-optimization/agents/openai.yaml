@@ -1,0 +1,14 @@
+interface:
+  display_name: "performance-optimization"
+  short_description: "Use when a developer has identified a performance issue in existing code and needs bottleneck analysis, optimized implementation, and benchmarks. Activate for slow code, high CPU/memory usage, or latency problems in a specific module. Do NOT use for database query optimization (use database-query-optimization skill), caching design, or infrastructure scaling."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

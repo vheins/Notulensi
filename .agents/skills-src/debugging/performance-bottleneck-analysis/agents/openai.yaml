@@ -1,0 +1,14 @@
+interface:
+  display_name: "performance-bottleneck-analysis"
+  short_description: "Identify top bottlenecks from performance profiles/metrics. Prioritize by impact and provide optimization recommendations. Do NOT use for memory leak detection, DB schema design, or capacity planning."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

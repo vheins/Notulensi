@@ -1,0 +1,6 @@
+interface:
+  display_name: "database-migration-test"
+  short_description: "Generates tests for database migrations covering forward migration, rollback, and data integrity. Do NOT use for application-level tests or ORM query tests."
+
+policy:
+  allow_implicit_invocation: true

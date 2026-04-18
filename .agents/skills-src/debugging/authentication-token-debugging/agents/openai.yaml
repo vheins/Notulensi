@@ -1,0 +1,6 @@
+interface:
+  display_name: "authentication-token-debugging"
+  short_description: "Debugs authentication token errors (JWT validation, OAuth token issues, expiry, signature, refresh flows). Do NOT use for CORS, session auth, or authorization logic."
+
+policy:
+  allow_implicit_invocation: true

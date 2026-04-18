@@ -1,0 +1,6 @@
+interface:
+  display_name: "network-latency-diagnosis"
+  short_description: "Identify network layer bottlenecks causing high latency, slow API calls, or timeouts. Do NOT use for database optimization, application profiling, or infrastructure provisioning."
+
+policy:
+  allow_implicit_invocation: true

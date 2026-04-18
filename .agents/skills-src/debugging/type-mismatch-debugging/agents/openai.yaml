@@ -1,0 +1,6 @@
+interface:
+  display_name: "type-mismatch-debugging"
+  short_description: "Resolve type mismatch errors, type coercion bugs, or schema validation failures. Explain type system behavior and apply correct fixes. Do NOT use for null/undefined errors, unrelated runtime exceptions, or type system design."
+
+policy:
+  allow_implicit_invocation: true

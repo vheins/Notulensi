@@ -1,0 +1,6 @@
+interface:
+  display_name: "unit-test-generation"
+  short_description: "Generates comprehensive unit tests for a given function, class, or module with proper mocking and edge case coverage. Do NOT use for integration or E2E tests."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "snapshot-test-generation"
+  short_description: "Generates snapshot tests for UI components, API responses, or serialized data. Do NOT use for behavioral or logic tests."
+
+policy:
+  allow_implicit_invocation: true

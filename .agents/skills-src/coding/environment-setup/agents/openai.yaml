@@ -1,0 +1,11 @@
+interface:
+  display_name: "environment-setup"
+  short_description: "Use to generate environment setup scripts, .env.example files, and README setup documentation for a project. Activate when onboarding a new developer or setting up a project for the first time on a new machine. Do NOT use for CI/CD pipeline configuration, Docker setup, or production infrastructure setup."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

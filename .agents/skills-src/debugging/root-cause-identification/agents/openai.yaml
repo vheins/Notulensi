@@ -1,0 +1,14 @@
+interface:
+  display_name: "root-cause-identification"
+  short_description: "Apply structured causal analysis (5-Why/fault tree) to trace bugs to their origin. Produce causal chain, root cause statement, and targeted fixes. Do NOT use for error parsing, performance profiling, or feature design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

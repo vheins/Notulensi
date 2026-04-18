@@ -1,0 +1,6 @@
+interface:
+  display_name: "form-design-specification"
+  short_description: "Produce a complete form design specification covering fields, validation, error messages, and submission states. Not for non-form UI components."
+
+policy:
+  allow_implicit_invocation: true

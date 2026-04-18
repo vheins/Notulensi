@@ -1,0 +1,6 @@
+interface:
+  display_name: "project-overview-documentation"
+  short_description: "Produce a non-technical project overview for stakeholders covering purpose, problem solved, target users, features, status, tech stack, team, timeline, and metrics. Do NOT use for technical architecture docs, API references, or developer onboarding guides."
+
+policy:
+  allow_implicit_invocation: true

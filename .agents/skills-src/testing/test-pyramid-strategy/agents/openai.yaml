@@ -1,0 +1,6 @@
+interface:
+  display_name: "test-pyramid-strategy"
+  short_description: "Designs test pyramid strategy (unit/integration/E2E ratios). Do NOT use for writing tests or analyzing coverage."
+
+policy:
+  allow_implicit_invocation: true

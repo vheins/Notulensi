@@ -1,0 +1,6 @@
+interface:
+  display_name: "postmortem-report-writing"
+  short_description: "Produce blameless incident postmortem reports after service outages, degradations, or deployment failures. Do NOT use for general incident triage, real-time incident response, or security breach reports."
+
+policy:
+  allow_implicit_invocation: true

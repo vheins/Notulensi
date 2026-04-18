@@ -1,0 +1,14 @@
+interface:
+  display_name: "system-design-review"
+  short_description: "Perform expert system design reviews focusing on scalability, reliability, maintainability, and security gaps. Provide prioritized recommendations. Do NOT use for initial architecture planning, code review, or cost estimation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

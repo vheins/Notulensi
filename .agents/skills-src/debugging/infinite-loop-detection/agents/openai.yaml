@@ -1,0 +1,11 @@
+interface:
+  display_name: "infinite-loop-detection"
+  short_description: "Identify loop condition failures causing applications to hang, consume 100% CPU, or never terminate. Do NOT use for deadlocks, race conditions, or performance optimization of terminating loops."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

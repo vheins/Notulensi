@@ -1,0 +1,14 @@
+interface:
+  display_name: "data-corruption-investigation"
+  short_description: "Investigates incorrect, inconsistent, or missing data to identify the corruption source and create a remediation plan. Do NOT use for data migration planning, schema design, or general database optimization."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

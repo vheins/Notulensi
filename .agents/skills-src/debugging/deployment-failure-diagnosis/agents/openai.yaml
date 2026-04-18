@@ -1,0 +1,14 @@
+interface:
+  display_name: "deployment-failure-diagnosis"
+  short_description: "Diagnoses CI/CD and cloud deployment failures by analyzing logs and configuration. Do NOT use for build failures, runtime application errors, or infrastructure provisioning design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

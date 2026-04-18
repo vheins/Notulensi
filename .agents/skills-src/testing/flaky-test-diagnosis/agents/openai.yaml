@@ -1,0 +1,6 @@
+interface:
+  display_name: "flaky-test-diagnosis"
+  short_description: "Use to diagnose flaky tests that pass and fail intermittently due to timing issues, state leakage, or external dependencies. Do NOT use for fixing functional bugs or writing new tests."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "security-penetration-test-case-writing"
+  short_description: "Generates security test cases covering OWASP Top 10 vulnerabilities for APIs or web apps. Do NOT use for production penetration testing or exploitation."
+
+policy:
+  allow_implicit_invocation: true

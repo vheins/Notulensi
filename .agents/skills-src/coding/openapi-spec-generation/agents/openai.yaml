@@ -1,0 +1,11 @@
+interface:
+  display_name: "openapi-spec-generation"
+  short_description: "Use to generate an OpenAPI 3.x YAML specification for an API, either from existing code or from a description. Activate for creating API documentation, generating client SDKs, or defining an API contract. Do NOT use for GraphQL schema generation, API implementation, or Postman collection creation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

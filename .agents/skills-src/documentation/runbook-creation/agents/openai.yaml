@@ -1,0 +1,6 @@
+interface:
+  display_name: "runbook-creation"
+  short_description: "Create comprehensive operational runbooks covering service overview, SLOs, monitoring, alerts, SOPs, incident response, and on-call checklists. Do NOT use for architecture documentation, API reference generation, or setup guides."
+
+policy:
+  allow_implicit_invocation: true

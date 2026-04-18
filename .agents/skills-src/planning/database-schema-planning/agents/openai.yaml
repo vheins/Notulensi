@@ -1,0 +1,11 @@
+interface:
+  display_name: "database-schema-planning"
+  short_description: "Designs a normalized database schema with tables, fields, indexes, relationships, and migration notes. DO NOT use for query optimization, ORM generation, or existing schema documentation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

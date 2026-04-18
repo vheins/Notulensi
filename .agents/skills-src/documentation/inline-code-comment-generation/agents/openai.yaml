@@ -1,0 +1,6 @@
+interface:
+  display_name: "inline-code-comment-generation"
+  short_description: "Add inline comments to existing code explaining non-obvious logic, business rules, performance trade-offs, security, and TODO/FIXME markers. Do NOT use for generating API documentation, READMEs, or commenting self-explanatory code."
+
+policy:
+  allow_implicit_invocation: true

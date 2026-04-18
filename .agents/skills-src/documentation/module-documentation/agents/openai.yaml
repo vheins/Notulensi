@@ -1,0 +1,6 @@
+interface:
+  display_name: "module-documentation"
+  short_description: "Generate comprehensive documentation for a code module/package covering purpose, public interface, dependencies, usage examples, limitations, and deprecations. Do NOT use for full API reference docs, project-level READMEs, or architecture documentation."
+
+policy:
+  allow_implicit_invocation: true

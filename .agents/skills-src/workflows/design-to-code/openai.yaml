@@ -1,0 +1,3 @@
+display_name: "design-to-code"
+short_description: "Translates approved UI/UX designs into implementation. Covers design handoff, component mapping, and coding. Do NOT use if designs are not approved."
+allow_implicit_invocation: true

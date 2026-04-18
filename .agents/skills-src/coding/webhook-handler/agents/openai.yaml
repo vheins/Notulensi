@@ -1,0 +1,11 @@
+interface:
+  display_name: "webhook-handler"
+  short_description: "Implements a production-ready webhook receiver with signature verification, idempotency, retries, and dead letter queue. DO NOT use for outgoing webhooks or general endpoints."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

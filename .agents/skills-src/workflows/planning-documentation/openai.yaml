@@ -1,0 +1,3 @@
+display_name: "planning-documentation"
+short_description: "Use to produce all pre-implementation documentation: BRD, PRD, FSD, TDD, ADRs, module docs, roadmap, sprint plans. Do NOT use for post-implementation docs."
+allow_implicit_invocation: true

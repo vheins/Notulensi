@@ -1,0 +1,11 @@
+interface:
+  display_name: "code-generation"
+  short_description: "Use to generate production-ready code for a new feature, function, class, or module from a description. Activate for writing new code from scratch with error handling, inline documentation, and a self-review checklist. Do NOT use for refactoring existing code, code review, or test generation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

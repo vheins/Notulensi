@@ -1,0 +1,11 @@
+interface:
+  display_name: "stakeholder-requirement-extraction"
+  short_description: "Convert informal stakeholder descriptions into structured functional/non-functional requirements, constraints, and open questions. Do NOT use for user story generation, acceptance criteria, or feature decomposition."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

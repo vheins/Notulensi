@@ -1,0 +1,11 @@
+interface:
+  display_name: "infrastructure-as-code"
+  short_description: "Generate Infrastructure as Code templates using Terraform, Pulumi, or AWS CDK. Do NOT use for Dockerfile creation, CI/CD pipelines, or application-level configuration."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

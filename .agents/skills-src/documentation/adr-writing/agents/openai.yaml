@@ -1,0 +1,6 @@
+interface:
+  display_name: "adr-writing"
+  short_description: "Generates an Architecture Decision Record (ADR) capturing context, chosen option, alternatives, and consequences. Do NOT use for feature planning, bug reports, or general design documents."
+
+policy:
+  allow_implicit_invocation: true

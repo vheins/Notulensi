@@ -1,0 +1,14 @@
+interface:
+  display_name: "feature-decomposition"
+  short_description: "Decompose a feature into atomic, independently implementable tasks with mapped dependencies, estimated effort, and defined acceptance criteria. Do NOT use for high-level roadmap creation, multi-feature sprint planning, or user story generation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

@@ -1,0 +1,17 @@
+interface:
+  display_name: "senior-code-review"
+  short_description: "Performs a comprehensive production-readiness evaluation. Covers error handling, security, performance, observability, testing, and documentation with severity-rated findings. DO NOT use for quick style reviews, refactoring, or generating code."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

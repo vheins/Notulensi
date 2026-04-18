@@ -1,0 +1,6 @@
+interface:
+  display_name: "performance-load-test-scripting"
+  short_description: "Generates load test scripts (ramp-up, steady state, spike) to verify system performance. Do NOT use for unit tests, functional tests, or stress testing beyond defined thresholds."
+
+policy:
+  allow_implicit_invocation: true

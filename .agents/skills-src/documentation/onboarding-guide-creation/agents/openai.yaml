@@ -1,0 +1,6 @@
+interface:
+  display_name: "onboarding-guide-creation"
+  short_description: "Create structured developer onboarding guides for new hires or contributors, covering setup, architecture, codebase tour, workflow, and first tasks. Do NOT use for API reference generation, operational runbooks, or architecture decision records."
+
+policy:
+  allow_implicit_invocation: true

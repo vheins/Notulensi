@@ -1,0 +1,6 @@
+interface:
+  display_name: "bdd-scenario-writing"
+  short_description: "Generate BDD scenarios in Gherkin format (Given/When/Then) for a feature or user story. Do NOT use for test automation code or unit tests."
+
+policy:
+  allow_implicit_invocation: true

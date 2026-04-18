@@ -1,0 +1,3 @@
+display_name: "release-documentation"
+short_description: "Use to produce post-implementation documentation: README, API docs, runbook, and changelog. Do NOT use for pre-implementation docs."
+allow_implicit_invocation: true

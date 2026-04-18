@@ -1,0 +1,6 @@
+interface:
+  display_name: "target-user-definition"
+  short_description: "Define a concrete user persona including demographics, goals, frustrations, and behaviors. Do NOT use for market sizing, competitor analysis, or feature prioritization."
+
+policy:
+  allow_implicit_invocation: true

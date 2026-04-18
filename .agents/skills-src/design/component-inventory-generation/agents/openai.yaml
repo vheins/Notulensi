@@ -1,0 +1,6 @@
+interface:
+  display_name: "component-inventory-generation"
+  short_description: "Use to produce a structured UI component inventory: name, purpose, props, states, and reusability. Used before implementation. Do NOT use for wireframes or backend architecture."
+
+policy:
+  allow_implicit_invocation: true

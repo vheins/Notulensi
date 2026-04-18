@@ -1,0 +1,9 @@
+interface:
+  display_name: "market-sizing"
+  short_description: "Estimate TAM, SAM, and SOM with documented assumptions. Do NOT use for competitor analysis, financial modeling, or revenue forecasting."
+
+policy:
+  allow_implicit_invocation: true
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

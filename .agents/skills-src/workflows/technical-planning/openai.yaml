@@ -1,0 +1,3 @@
+display_name: "technical-planning"
+short_description: "Use to define the technical blueprint: tech stack, architecture, domain model, DB schema, API contracts, roadmap, and sprints. Do NOT use for requirements or implementation."
+allow_implicit_invocation: true

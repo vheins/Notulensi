@@ -1,0 +1,11 @@
+interface:
+  display_name: "sdk-library-integration"
+  short_description: "Use to integrate a third-party SDK or library into their application with a proper abstraction layer, error handling, retry logic, and a mock for testing. Activate for adding a new external service integration. Do NOT use for building SDKs from scratch, API contract design, or webhook handling."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

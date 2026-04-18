@@ -1,0 +1,6 @@
+interface:
+  display_name: "test-refactoring"
+  short_description: "Refactors brittle, slow, or duplicated tests for maintainability and reliability. Do NOT use for new tests or changing coverage."
+
+policy:
+  allow_implicit_invocation: true

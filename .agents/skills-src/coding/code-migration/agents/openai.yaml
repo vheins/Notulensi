@@ -1,0 +1,11 @@
+interface:
+  display_name: "code-migration"
+  short_description: "Use to migrate existing code from one framework, language version, or technology stack to another. Activate for porting code with compatibility notes, breaking change identification, and maintaining test coverage through the migration. Do NOT use for refactoring within the same stack, dependency upgrades, or new feature development."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

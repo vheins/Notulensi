@@ -1,0 +1,11 @@
+interface:
+  display_name: "error-handling-patterns"
+  short_description: "Implement a comprehensive error handling strategy with typed errors, propagation, logging, and user-facing messages. Do NOT use for debugging existing errors, writing tests, or logging-only instrumentation."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

@@ -1,0 +1,3 @@
+display_name: "requirements-planning"
+short_description: "Use to transform validated ideas into structured requirements: user stories, acceptance criteria, task backlog, and risk register. Do NOT use for technical planning or implementation."
+allow_implicit_invocation: true

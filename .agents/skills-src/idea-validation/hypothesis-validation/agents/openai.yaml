@@ -1,0 +1,6 @@
+interface:
+  display_name: "hypothesis-validation"
+  short_description: "Design a lean validation experiment for a specific assumption. Includes a hypothesis statement, success metric, test method, and pivot triggers. Do NOT use for assumption mapping, market sizing, or MVP scope definition."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,11 @@
+interface:
+  display_name: "race-condition-detection"
+  short_description: "Identify race conditions in concurrent code exhibiting timing-dependent bugs. Do NOT use for deadlock analysis, single-threaded logic bugs, or DB transaction isolation issues."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

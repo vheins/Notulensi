@@ -1,0 +1,11 @@
+interface:
+  display_name: "configuration-management"
+  short_description: "Use to design and implement a configuration management system with environment separation, secrets handling, and startup validation. Activate when the request involves managing app config across dev/staging/production environments. Do NOT use for environment setup scripts, CI/CD configuration, or infrastructure secrets management."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

@@ -1,0 +1,3 @@
+display_name: "implement-feature"
+short_description: "Use when a blueprint exists and you need to build end-to-end (design, code, test, document). Do NOT use for unvalidated ideas."
+allow_implicit_invocation: true

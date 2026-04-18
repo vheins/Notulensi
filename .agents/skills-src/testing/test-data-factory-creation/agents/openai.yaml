@@ -1,0 +1,6 @@
+interface:
+  display_name: "test-data-factory-creation"
+  short_description: "Creates test data factories for realistic, randomized, and edge-case test data. Do NOT use for production data generation or database seeding."
+
+policy:
+  allow_implicit_invocation: true

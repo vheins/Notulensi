@@ -1,0 +1,11 @@
+interface:
+  display_name: "interface-contract-implementation"
+  short_description: "Implements all methods of a defined interface, abstract class, or contract with full type safety, error handling, and documentation. Do NOT use for designing interfaces from scratch, API contract design, or generating tests only."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

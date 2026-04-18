@@ -1,0 +1,6 @@
+interface:
+  display_name: "mvp-scope-definition"
+  short_description: "Define MVP scope using MoSCoW prioritization, producing feature lists, rationale, and metrics. Do NOT use for feature scoring, feasibility assessment, or sprint planning."
+
+policy:
+  allow_implicit_invocation: true

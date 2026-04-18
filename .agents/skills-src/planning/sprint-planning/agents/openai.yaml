@@ -1,0 +1,14 @@
+interface:
+  display_name: "sprint-planning"
+  short_description: "Break backlog items into tasks with story points, priority, capacity checks, and definition of done. Do NOT use for feature decomposition, roadmap creation, or backlog grooming."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

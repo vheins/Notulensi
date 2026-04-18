@@ -1,0 +1,11 @@
+interface:
+  display_name: "logging-instrumentation"
+  short_description: "Adds structured logging to a module or service, including log levels, context fields, correlation IDs, and PII masking. Do NOT use for error handling design, metrics/tracing instrumentation, or log aggregation setup."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

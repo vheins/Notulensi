@@ -1,0 +1,6 @@
+interface:
+  display_name: "dashboard-layout-design"
+  short_description: "Use to generate a complete layout spec for data-heavy dashboards (grid, widgets, filters, states, responsive rules). Do NOT use for simple screens or non-data UI."
+
+policy:
+  allow_implicit_invocation: true

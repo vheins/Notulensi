@@ -1,0 +1,3 @@
+display_name: "idea-to-blueprint"
+short_description: "Use to transform a raw product idea into a complete blueprint (validation, requirements, technical plan, docs). Do NOT use if a blueprint exists."
+allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "atomic-testing"
+  short_description: "Run tests file-by-file with automated failure recovery. Ensures each test file passes in isolation. Use for test suites with mixed failures requiring deterministic execution and fix-and-retry loops. Do NOT use for full test suite runs or writing new tests."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,11 @@
+interface:
+  display_name: "user-story-generation"
+  short_description: "Generate user stories in standard "As a [role], I want [goal], so that [benefit]" format with EARS-format acceptance criteria. Do NOT use for technical task breakdown, sprint planning, or backlog grooming."As a [role], I ..."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

@@ -1,0 +1,6 @@
+interface:
+  display_name: "problem-identification"
+  short_description: "Articulates core problems behind product ideas, identifies users, and documents pain points. DO NOT use for solution brainstorming or feature planning."
+
+policy:
+  allow_implicit_invocation: true

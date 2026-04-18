@@ -1,0 +1,3 @@
+display_name: "task-management"
+short_description: "Manage task files for workflows. Includes creation, step tracking, gate logging, context snapshots, and archiving. Activate at start and after gate confirmations. Not for sprint planning."
+allow_implicit_invocation: true

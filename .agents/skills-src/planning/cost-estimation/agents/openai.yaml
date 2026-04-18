@@ -1,0 +1,11 @@
+interface:
+  display_name: "cost-estimation"
+  short_description: "Generates a development cost estimate by breaking down features into tasks, applying hourly rates, and adding contingency. Do NOT use for infra costs, sprint planning, or feature decomposition without cost context."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"

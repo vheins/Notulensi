@@ -1,0 +1,6 @@
+interface:
+  display_name: "qa-execution"
+  short_description: "Skill for executing tests, verifying results, and reporting bugs."
+
+policy:
+  allow_implicit_invocation: true

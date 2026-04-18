@@ -1,0 +1,14 @@
+interface:
+  display_name: "monolith-decomposition"
+  short_description: "Plan incremental decomposition of a monolith into services. Includes decomposition phases, strangler fig pattern application, extraction order, and rollback strategies. Do NOT use for defining microservice boundaries from scratch, greenfield architecture planning, or database migrations."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

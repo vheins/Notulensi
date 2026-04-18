@@ -1,0 +1,11 @@
+interface:
+  display_name: "pagination-implementation"
+  short_description: "Use to implement pagination for an API endpoint or UI data list. Activate for cursor-based or offset pagination, total count, next/prev links, and performance considerations for large datasets. Do NOT use for infinite scroll UI implementation, search result ranking, or data filtering design."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

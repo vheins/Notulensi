@@ -1,0 +1,11 @@
+interface:
+  display_name: "rest-to-graphql-migration"
+  short_description: "Use to plan and implement a migration from a REST API to GraphQL, including schema design, resolver mapping, deprecation strategy, and client migration guide. Activate for transitioning an existing REST API to GraphQL. Do NOT use for designing a new GraphQL API from scratch, REST API design, or API versioning."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@upstash/context7-mcp"
+      description: "Up-to-date library documentation and code examples"

@@ -1,0 +1,6 @@
+interface:
+  display_name: "integration-test-generation"
+  short_description: "Use to generate integration tests for service interactions, API endpoints, database operations, or multi-component workflows. Do NOT use for unit tests or E2E tests."
+
+policy:
+  allow_implicit_invocation: true

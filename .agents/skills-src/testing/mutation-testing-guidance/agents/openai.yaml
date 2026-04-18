@@ -1,0 +1,6 @@
+interface:
+  display_name: "mutation-testing-guidance"
+  short_description: "Guides setup of mutation testing and interpretation of mutation scores to improve test quality. Do NOT use for writing functional tests or measuring code coverage."
+
+policy:
+  allow_implicit_invocation: true

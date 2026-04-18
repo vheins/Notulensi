@@ -1,0 +1,6 @@
+interface:
+  display_name: "api-contract-test-generation"
+  short_description: "Generate contract tests verifying API implementations match OpenAPI specifications. Do NOT use for functional or performance tests."
+
+policy:
+  allow_implicit_invocation: true

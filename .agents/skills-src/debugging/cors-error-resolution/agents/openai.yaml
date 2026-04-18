@@ -1,0 +1,6 @@
+interface:
+  display_name: "cors-error-resolution"
+  short_description: "Resolves browser CORS errors by identifying missing headers and applying server-side fixes. Do NOT use for authentication errors, API gateway config, or network firewalls."
+
+policy:
+  allow_implicit_invocation: true

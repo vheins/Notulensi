@@ -1,0 +1,3 @@
+display_name: "coding-pipeline"
+short_description: "Use to implement, review, and refactor code. Covers setup, implementation, review, and refactoring. Do NOT use for planning, testing, or docs."
+allow_implicit_invocation: true

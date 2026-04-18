@@ -1,0 +1,14 @@
+interface:
+  display_name: "roadmap-creation"
+  short_description: "Generate phased product roadmaps with milestones, deliverables, timelines, and success criteria. Do NOT use for sprint-level task planning, individual feature decomposition, or backlog grooming."
+
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-sequential-thinking"
+      description: "Structured multi-step reasoning for complex problem solving"
+    - type: "mcp"
+      value: "@modelcontextprotocol/server-memory"
+      description: "Persistent knowledge graph memory across sessions"

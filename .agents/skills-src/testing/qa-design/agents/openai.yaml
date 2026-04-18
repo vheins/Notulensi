@@ -1,0 +1,6 @@
+interface:
+  display_name: "qa-design"
+  short_description: "Skill for designing structured test flows and scenarios (Positive, Negative, Monkey, Security)."
+
+policy:
+  allow_implicit_invocation: true
