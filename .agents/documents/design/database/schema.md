@@ -8,7 +8,7 @@ Stores the main meeting data.
 ```dart
 @collection
 class MeetingNoteCollection {
-  Id id; // Integer ID mapped from UUID String via fastHash
+  late String id; // UUID String-based Primary Key
 
   @Index(type: IndexType.value)
   late String title;
@@ -33,7 +33,7 @@ Stores extracted action items.
 ```dart
 @collection
 class ActionItemCollection {
-  Id id; // Integer ID mapped from UUID String via fastHash
+  late String id; // UUID String-based Primary Key
 
   late String content;
   late bool isCompleted;
@@ -48,7 +48,7 @@ Stores extracted deadlines.
 ```dart
 @collection
 class DeadlineCollection {
-  Id id; // Integer ID mapped from UUID String via fastHash
+  late String id; // UUID String-based Primary Key
 
   late String dateText;
   late String associatedText;
