@@ -38,6 +38,8 @@ dependencies:
   share_plus: ^12.0.2
   google_mobile_ads: ^8.0.0
   ffmpeg_kit_flutter_full_gpl: ^6.0.3
+  path_provider_platform_interface: ^2.1.2
+  storage_space: ^1.2.0
 
 dev_dependencies:
   flutter_test:
