@@ -8,6 +8,7 @@ import '../../features/intelligence/services/speaker_tagging_service.dart';
 import '../../features/intelligence/services/noise_suppression_service.dart';
 import '../../features/intelligence/services/analytics_service.dart';
 import '../../features/intelligence/services/context_linking_service.dart';
+import '../../features/intelligence/services/voice_command_service.dart';
 import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/logic/folder_detail_controller.dart';
@@ -48,6 +49,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<SpeakerTaggingService>(() => SpeakerTaggingService());
     Get.lazyPut<NoiseSuppressionService>(() => NoiseSuppressionService());
     Get.lazyPut<AnalyticsService>(() => AnalyticsService());
+    Get.lazyPut<VoiceCommandService>(() => VoiceCommandService());
     Get.lazyPut<ContextLinkingService>(
       () => ContextLinkingService(
         isarService: Get.find<IsarService>(),
