@@ -5,6 +5,7 @@ import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/services/note_management_service.dart';
 import '../../features/notes/services/search_service.dart';
 import '../../features/recording/logic/audio_playback_controller.dart';
+import '../../features/recording/logic/recording_controller.dart';
 import '../../features/recording/services/audio_player_service.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
@@ -43,5 +44,6 @@ class InitialBinding extends Bindings {
     Get.lazyPut<AudioPlaybackController>(
       () => AudioPlaybackController(service: Get.find<AudioPlayerService>()),
     );
+    Get.lazyPut<RecordingController>(() => RecordingController());
   }
 }
