@@ -1,48 +1,64 @@
 # Acceptance Criteria (EARS Format): Notulensi
 
-## 1. Recording & Transcription
+## 1. Recording & Interaction
 - **AC-001 (Audio Capture):**
   - **WHEN** the user taps the 'Record' button,
-  - **THE** system **SHALL** request microphone permissions (if not already granted) and start capturing audio.
-- **AC-002 (Real-time Feedback):**
+  - **THE** system **SHALL** request microphone permissions and start capturing mono PCM 16kHz audio.
+- **AC-002 (Waveform & Markers):**
   - **WHILE** the recording is active,
-  - **THE** system **SHALL** display a live waveform and a scrolling real-time transcript.
-- **AC-003 (Offline Integrity):**
-  - **WHERE** the device has no internet connection,
-  - **THE** system **SHALL** perform transcription using local models (e.g., Vosk/Whisper.dart) without errors.
-- **AC-004 (Data Saving):**
-  - **WHEN** the user taps 'Stop',
-  - **THE** system **SHALL** persist the audio file and the full transcript to the local Isar database within 2 seconds.
+  - **THE** system **SHALL** display a live waveform and allow the user to drop markers via UI taps, volume keys, or smartwatch remote.
+- **AC-003 (Offline STT & Noise Suppression):**
+  - **WHERE** the environment is noisy,
+  - **THE** system **SHALL** apply a local ML noise filter before performing 100% offline transcription.
+- **AC-014 (Voice Commands):**
+  - **WHEN** the user speaks a registered command (e.g., "Stop Recording"),
+  - **THE** system **SHALL** execute the corresponding action without requiring physical touch.
+- **AC-015 (Multimedia Anchoring):**
+  - **WHEN** a photo is taken during recording,
+  - **THE** system **SHALL** store the image and link it to the current audio timestamp in the transcript.
 
-## 2. Note Management
-- **AC-005 (Search Functionality):**
-  - **WHEN** the user enters text in the search bar,
-  - **THE** system **SHALL** filter the note list in real-time based on matches in the title or transcript text.
-- **AC-006 (Note Deletion):**
-  - **WHEN** the user selects 'Delete' on a note and confirms,
-  - **THE** system **SHALL** remove the database record and the associated audio file from local storage.
+## 2. Note Management & Security
+- **AC-005 (Search & Context):**
+  - **WHEN** a note is opened,
+  - **THE** system **SHALL** highlight keywords that overlap with other local notes to facilitate context linking.
+- **AC-016 (Biometric Safe-Box):**
+  - **WHERE** the user has enabled biometric protection,
+  - **THE** system **SHALL** require a valid fingerprint or face ID scan before granting access to the note list or encrypted database.
+- **AC-017 (Project Folders):**
+  - **THE** system **SHALL** allow users to create, rename, and move notes into custom folders for organization.
+- **AC-018 (Versioning):**
+  - **WHEN** a transcript is manually edited,
+  - **THE** system **SHALL** create a snapshot of the previous state, allowing up to 5 versions to be stored locally.
 
-## 3. Rule-based Extraction
-- **AC-007 (Action Item Identification):**
-  - **WHEN** the transcript contains phrases like "I will", "need to", or "action item",
-  - **THE** system **SHALL** extract the following sentence as an 'Action Item' in the structured summary.
-- **AC-008 (Deadline Extraction):**
-  - **WHEN** the transcript contains date-related keywords (e.g., "by Monday", "on Oct 12"),
-  - **THE** system **SHALL** tag the associated text as a 'Deadline'.
+## 3. Intelligence & Extraction
+- **AC-007 (Action Item & Privacy Masking):**
+  - **WHEN** the transcript is processed,
+  - **THE** system **SHALL** extract action items and optionally mask PII (names/numbers) based on user preference.
+- **AC-019 (Speaker Separation):**
+  - **WHILE** transcribing,
+  - **THE** system **SHALL** use VAD to detect pauses and tone shifts, inserting paragraph breaks to indicate speaker changes.
+- **AC-020 (Calendar Bridge):**
+  - **WHEN** a deadline is extracted,
+  - **THE** system **SHALL** provide a "Sync to Calendar" button that opens the native OS calendar with pre-filled event details.
 
-## 4. Exporting
-- **AC-009 (PDF Generation):**
+## 4. Export & Ecosystem
+- **AC-009 (Template-Based Export):**
   - **WHEN** the user selects 'Export to PDF',
-  - **THE** system **SHALL** generate a PDF containing the meeting title, date, structured highlights (Action Items/Deadlines), and the full transcript.
-- **AC-010 (File Portability):**
-  - **WHEN** a file is exported,
-  - **THE** system **SHALL** open the native share sheet to allow the user to save it to their device or send it via other apps.
+  - **THE** system **SHALL** allow selection from multiple local templates (Formal, Creative, Minimalist).
+- **AC-021 (Zero-Network QR Sharing):**
+  - **WHEN** the user selects 'Share via QR',
+  - **THE** system **SHALL** compress the transcript and generate a high-density QR code for offline device-to-device transfer.
+- **AC-022 (Auto-Silence Trimming):**
+  - **WHEN** a recording is saved,
+  - **THE** system **SHALL** analyze the audio and remove silent gaps exceeding 3 seconds to optimize storage.
 
-## 5. Non-Functional
+## 5. Non-Functional & Monetization
 - **AC-011 (Privacy Boundary):**
-  - **THE** system **SHALL NOT** include any networking code that transmits audio or transcript data to external servers.
-- **AC-012 (Ad Display):**
-  - **WHERE** the user is in the main list or settings,
-  - **THE** system **SHALL** display a non-intrusive AdMob banner.
-- **AC-013 (Storage Management):**
-  - **THE** system **SHALL** display the total storage used by all meeting records in the 'Settings' menu.
+  - **THE** system **SHALL NOT** transmit any audio, transcript, or meeting metadata to external servers.
+- **AC-012 (Ad & Reward Flow):**
+  - **WHERE** the user is in a free tier,
+  - **THE** system **SHALL** display AdMob banners and allow reward-ads to unlock premium local features.
+- **AC-023 (Offline Integrity):**
+  - **THE** application **SHALL** remain 100% functional for all core tasks in environments with no internet access (excluding ad delivery).
+- **AC-013 (Storage Dashboard):**
+  - **THE** system **SHALL** display per-note and total storage metrics, including space saved by the silence trimmer.

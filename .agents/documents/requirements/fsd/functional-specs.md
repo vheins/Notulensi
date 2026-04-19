@@ -1,82 +1,61 @@
 # Functional Specification Document (FSD): Notulensi
 
 ## 1. Overview
-This document specifies the user interactions and detailed functional behaviors for the **Notulensi** application. It serves as a bridge between the high-level PRD and the low-level Technical Design (TDD).
+This document specifies user interactions and detailed functional behaviors for the **Notulensi** application, serving as the bridge between PRD and Technical Design.
 
-## 2. User Interaction Flows
+## 2. Core Interaction Flows
 
-### 2.1 Audio Recording & Live Transcription (Core)
-**Trigger**: User taps the FAB (Floating Action Button) from the Home screen.
+### 2.1 Secured Access (Safe-Box)
+**Trigger**: App launch or background-to-foreground transition.
+1. System displays a biometric prompt.
+2. User provides Fingerprint/FaceID.
+3. On success, Note List is decrypted and displayed.
 
-| Step | Action | Response |
-| :--- | :--- | :--- |
-| 1 | Tap FAB | System requests microphone permission (if not granted). |
-| 2 | Permission Granted | System initializes the `speech_to_text` engine and starts recording. |
-| 3 | Audio Input | Real-time waveform update (UI) and transcript stream starts. |
-| 4 | Stop Tap | System stops recording, persists the audio file and transcript to the Isar database. |
-| 5 | Post-process | System automatically triggers the Rule-based Extraction engine in a background isolate. |
+### 2.2 Advanced Recording (Interaction)
+**Trigger**: User taps FAB or shakes device.
+1. System starts capturing audio.
+2. **Markers**: User taps waveform, smartwatch, or volume keys to drop a bookmark.
+3. **Multimedia**: User taps 'Camera' to take a timestamped photo.
+4. **Voice Command**: User says "Stop" to finish.
 
-### 2.2 Highlight Extraction (Background)
-**Trigger**: Completion of an audio recording session.
-
-| Input | Logic | Output |
-| :--- | :--- | :--- |
-| **Commitment** | Sentences starting with "I will", "We need to", "Action item:". | Saved as an `ActionItem` linked to the note. |
-| **Temporal** | Sentences containing "by Monday", "on Oct 12", "deadline is". | Saved as a `Deadline` linked to the note. |
-
-### 2.3 Note Management & Search
-**Trigger**: Home screen view or search bar input.
-
-- **Note List**: Displays all saved notes sorted by `createdAt` (descending). Each card shows the title, date, and a snippet of the transcript.
-- **Full-Text Search**: As the user types in the search bar, the list filters results in < 100ms based on matches in the transcript text or title.
-- **Note Details**: Tapping a note card opens the full transcript view with toggleable panels for 'Action Items' and 'Deadlines'.
+### 2.3 Local Processing (Intelligence)
+**Trigger**: Recording stop event.
+1. **Trimmer**: Silent gaps > 3s are removed from PCM buffer.
+2. **Noise Filter**: Local ML cleans the audio.
+3. **STT**: Local engine transcribes speech.
+4. **Parser**: Action items, deadlines, and PII (for masking) are identified.
 
 ## 3. Screen Specifications
 
-### 3.1 Home Screen (Dashboard)
-- **Top Bar**: App name and Search input field.
-- **List View**: Paginated list of meeting notes.
-- **FAB**: Prominent 'Record' button with pulse animation.
-- **Bottom Banner**: AdMob non-intrusive ad.
+### 3.1 Home Screen (Secured)
+- **Folder Navigation**: Sidebar or tab-view for custom project folders.
+- **Search**: Scoped search (current folder) vs Global search.
+- **Privacy Lock**: Visual indicator of encrypted state.
 
-### 3.2 Recording Screen (Active)
-- **Header**: Duration timer (HH:MM:SS).
-- **Body**: Waveform visualization and scrolling transcript area.
-- **Actions**: 'Cancel' (Discard) and 'Stop' (Save).
+### 3.2 Recording Screen (Rich)
+- **Live Transcript**: Scrollable text with auto-paragraphing (Speaker Tagging).
+- **Control Bar**: Add Marker (Star icon), Take Photo (Camera icon), Pause/Stop.
+- **Waveform**: Interactive waveform with visible marker points.
 
-### 3.3 Note Detail Screen
-- **Title View**: Editable note title.
-- **Highlights Bar**: Tabs for 'Action Items' and 'Deadlines' with badges indicating count.
-- **Transcript Area**: Selectable and copyable text view of the full session.
-- **Actions**: 'Export' (PDF/TXT) and 'Delete'.
+### 3.3 Note Detail Screen (Dynamic)
+- **Redaction Toggle**: Button to mask/unmask sensitive info in the view.
+- **Version History**: Bottom sheet displaying manual edit snapshots.
+- **Multimedia Gallery**: Horizontal carousel of meeting photos synced to text.
+- **Actions**: Export (with template picker), Sync to Calendar, Share via QR.
 
-### 3.4 Settings Screen
-- **Storage Info**: Displays used storage (MB) and total available space.
-- **Language Management**: Link to system speech settings to download offline language packs.
-- **About/License**: Credits and legal information.
+### 3.4 Settings & Reward Center
+- **Monetization**: "Watch Ad to Unlock Pro" button (Reward-unlocked templates).
+- **Backup**: "Export Encrypted Backup to SD" action.
+- **STT Settings**: Link to OS language settings + Pro model download.
 
 ## 4. Input & Output Behavior
 
 ### 4.1 Data Input
-- **Microphone**: Mono PCM 16-bit 16kHz audio stream.
-- **Text Input**: Manual title editing and transcript corrections.
+- **Biometric**: Fingerprint/FaceID tokens.
+- **Hardware**: Volume button interrupts.
+- **Camera**: Raw image data (anchored to ms).
 
 ### 4.2 Data Output
-- **PDF Export**: Standardized A4 document format with header, highlights, and transcript body.
-- **TXT Export**: Raw text file formatted as UTF-8.
-- **Share Sheet**: Standard Android/iOS sharing dialog.
-
-## 5. STT Model Management
-**Trigger**: System checks capabilities before initiating a recording session.
-
-| State | Definition | UI Behavior |
-| :--- | :--- | :--- |
-| **Not Downloaded** | Offline STT model for the selected language is not present on the device. | Display prompt to download the language pack, directing the user to OS settings. Prevent recording. |
-| **Downloading** | The OS is currently downloading the required language pack. | Show a 'Downloading Language Model...' indicator. Disable the Record button until ready. |
-| **Ready** | Offline STT model is verified as downloaded and available. | Enable the Record button. Allow standard recording flow. |
-| **Failed** | Model initialization failed due to corruption, OS error, or unsupported device. | Show an error dialog explaining the issue with an option to retry or check settings. Prevent recording. |
-
-## 6. Error & Exception Handling
-- **Low Storage**: System displays a warning banner when device storage < 50MB and prevents new recording starts.
-- **Mic Busy**: Informative error dialog if another application is holding the audio focus.
-- **STT Failure**: If system STT fails or language pack is missing, user is guided to OS settings.
+- **QR Sync**: Multi-part high-density QR codes.
+- **Calendar**: Native `EKEvent` (iOS) or `CalendarContract` (Android) data.
+- **PDF**: Multi-template documents generated via `pdf` package.

@@ -2,81 +2,109 @@
 
 Notulensi uses **Isar Database** for high-performance, offline data persistence.
 
-## 1. MeetingNoteCollection
-Stores the main meeting data using UUID primary keys.
+## 1. ProjectFolderCollection
+Used to group meeting notes.
+
+```dart
+@collection
+class ProjectFolderCollection {
+  late String id; // UUID
+  
+  @Index(unique: true)
+  late String name;
+  
+  late DateTime createdAt;
+  
+  // Link to notes in this folder
+  @Backlink(to: 'folder')
+  final notes = IsarLinks<MeetingNoteCollection>();
+}
+```
+
+## 2. MeetingNoteCollection
+Stores the main meeting data. Supports encryption and versioning.
 
 ```dart
 @collection
 class MeetingNoteCollection {
-  late String id; // UUID String-based Primary Key
+  late String id; // UUID
   
   @Index(type: IndexType.value)
   late String title;
   
   late DateTime createdAt;
   late DateTime updatedAt;
-  DateTime? deletedAt; // Soft Delete support
+  DateTime? deletedAt;
 
   @Index(type: IndexType.value, caseSensitive: false)
-  late String transcript; // Full-text search enabled
+  late String transcript;
 
   late String audioPath;
   late int storageSize;
+  
+  // Security
+  bool isEncrypted = false;
+  String? encryptionSalt; // For Isar encryption key derivation
 
-  // Links to associated collections
+  // Links
+  final folder = IsarLink<ProjectFolderCollection>();
   final actionItems = IsarLinks<ActionItemCollection>();
   final deadlines = IsarLinks<DeadlineCollection>();
+  final markers = IsarLinks<MarkerCollection>();
+  final photos = IsarLinks<PhotoCollection>();
+  final versions = IsarLinks<NoteVersionCollection>();
 }
 ```
 
-## 2. ActionItemCollection
-Stores extracted action items.
+## 3. MarkerCollection
+User-defined bookmarks during recording.
 
 ```dart
 @collection
-class ActionItemCollection {
-  late String id; // UUID String-based Primary Key
+class MarkerCollection {
+  late String id; // UUID
+  late int timestampMs; // Milliseconds from start of recording
+  String? label; // e.g. "Important", "Star"
   
-  late String content;
-  late int startIndex;
-  late int endIndex;
-  bool isCompleted = false;
-  
-  late DateTime createdAt;
-  late DateTime updatedAt;
-
-  // Backlink to Note
-  @Backlink(to: 'actionItems')
+  @Backlink(to: 'markers')
   final note = IsarLink<MeetingNoteCollection>();
 }
 ```
 
-## 3. DeadlineCollection
-Stores extracted deadlines.
+## 4. PhotoCollection
+Photos taken during a meeting, anchored to time.
 
 ```dart
 @collection
-class DeadlineCollection {
-  late String id; // UUID String-based Primary Key
+class PhotoCollection {
+  late String id; // UUID
+  late String localPath;
+  late int timestampMs;
   
-  late String content;
-  late String dateText;
-  late DateTime deadlineDate;
-  late int startIndex;
-  late int endIndex;
-  
-  late DateTime createdAt;
-  late DateTime updatedAt;
-
-  // Backlink to Note
-  @Backlink(to: 'deadlines')
+  @Backlink(to: 'photos')
   final note = IsarLink<MeetingNoteCollection>();
 }
 ```
 
-## 4. Database Indices & Performance
-- **Full-Text Search**: The `transcript` field in `MeetingNoteCollection` is indexed for fast local search.
-- **Synchronous vs Asynchronous**:
-  - Writes (Saving a note) will be **Asynchronous** to avoid blocking the UI.
-  - Reads (Listing notes) will use **Watchers** for real-time UI updates.
-- **Relational Integrity**: Links are used to ensure that when a `MeetingNote` is fetched, its associated `ActionItems` and `Deadlines` can be loaded efficiently.
+## 5. NoteVersionCollection
+Snapshot of transcript history for manual edits.
+
+```dart
+@collection
+class NoteVersionCollection {
+  late String id; // UUID
+  late String transcriptSnapshot;
+  late DateTime savedAt;
+  
+  @Backlink(to: 'versions')
+  final note = IsarLink<MeetingNoteCollection>();
+}
+```
+
+## 6. ActionItem & Deadline (Unchanged Structure)
+*Refer to previous schema for ActionItemCollection and DeadlineCollection.*
+
+## 7. Performance & Security
+- **Isar Encryption**: Sensitive notes are stored using Isar's built-in AES encryption, with keys managed via Biometric/KeyStore.
+- **Lazy Loading**: Photos and Versions are loaded only when requested.
+- **Indices**: Added indexes for `title`, `transcript`, and `folder.name`.

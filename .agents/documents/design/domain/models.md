@@ -13,8 +13,14 @@ class MeetingNote {
   final String transcript;
   final String audioFilePath;
   final int storageSizeInBytes;
+  final bool isEncrypted;
+  
+  // Associations
   final List<ActionItem> actionItems;
   final List<Deadline> deadlines;
+  final List<Marker> markers;
+  final List<NotePhoto> photos;
+  final List<NoteVersion> history;
 
   MeetingNote({
     required this.id,
@@ -23,58 +29,81 @@ class MeetingNote {
     required this.transcript,
     required this.audioFilePath,
     required this.storageSizeInBytes,
+    this.isEncrypted = false,
     this.actionItems = const [],
     this.deadlines = const [],
+    this.markers = const [],
+    this.photos = const [],
+    this.history = const [],
   });
 }
 ```
 
-## 2. ActionItem
-A specific task extracted from the transcript.
+## 2. Marker
+A user-defined bookmark anchored to a specific time.
 
 ```dart
-class ActionItem {
+class Marker {
   final String id;
-  final String content;
-  final bool isCompleted;
+  final int timestampMs;
+  final String label;
 
-  ActionItem({
+  Marker({
     required this.id,
-    required this.content,
-    this.isCompleted = false,
+    required this.timestampMs,
+    this.label = "Bookmark",
   });
 }
 ```
 
-## 3. Deadline
-A time-sensitive highlight extracted from the transcript.
+## 3. NotePhoto
+A photo captured during a meeting.
 
 ```dart
-class Deadline {
+class NotePhoto {
   final String id;
-  final String dateText;
-  final String associatedText;
+  final String localPath;
+  final int timestampMs;
 
-  Deadline({
+  NotePhoto({
     required this.id,
-    required this.dateText,
-    required this.associatedText,
+    required this.localPath,
+    required this.timestampMs,
   });
 }
 ```
 
-## 4. StorageStats
-Used for the Settings screen to display usage.
+## 4. NoteVersion
+A historical version of a transcript edit.
+
+```dart
+class NoteVersion {
+  final String id;
+  final String transcript;
+  final DateTime savedAt;
+
+  NoteVersion({
+    required this.id,
+    required this.transcript,
+    required this.savedAt,
+  });
+}
+```
+
+## 5. StorageStats
+Includes optimizations from the silence trimmer.
 
 ```dart
 class StorageStats {
   final int totalNotes;
   final int totalBytesUsed;
+  final int bytesSavedByTrimming;
   final double availableSpaceGB;
 
   StorageStats({
     required this.totalNotes,
     required this.totalBytesUsed,
+    required this.bytesSavedByTrimming,
     required this.availableSpaceGB,
   });
 }
