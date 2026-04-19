@@ -59,6 +59,7 @@ dependencies:
   floating: ^6.0.0
   flutter_overlay_window: ^0.5.0
   nearby_connections: ^4.3.0
+  shake: ^3.0.0
 
 dev_dependencies:
   flutter_test:
