@@ -6,6 +6,7 @@ import '../../intelligence/services/stt_service.dart';
 import '../../../core/permissions/permission_service.dart';
 import '../../../core/navigation/app_routes.dart';
 import '../services/audio_recording_service.dart';
+import '../presentation/widgets/waveform_visualizer.dart';
 
 class RecordingController extends GetxController {
   // Use Get.find lazily
@@ -18,6 +19,7 @@ class RecordingController extends GetxController {
   final isRecording = false.obs;
   final duration = Duration.zero.obs;
   final transcript = ''.obs;
+  final markers = <WaveformMarker>[].obs;
   String? currentAudioPath;
 
   Timer? _timer;
@@ -77,7 +79,7 @@ class RecordingController extends GetxController {
     });
   }
 
-  void stopRecording() {
+void stopRecording() {
     print('DEBUG: RecordingController.stopRecording() called');
     isRecording.value = false;
     _timer?.cancel();
@@ -86,7 +88,12 @@ class RecordingController extends GetxController {
     _recordingService.stop();
   }
 
-Future<void> stopAndSave() async {
+  void addMarker({String? label}) {
+    if (!isRecording.value) return;
+    markers.add(WaveformMarker(timestamp: duration.value, label: label));
+  }
+
+  Future<void> stopAndSave() async {
     print('DEBUG: RecordingController.stopAndSave() starting');
 
     final finalTranscript = transcript.value;

@@ -83,6 +83,7 @@ class RecordingScreen extends GetView<RecordingController> {
               child: Obx(() => WaveformVisualizer(
                 amplitudes: controller.amplitudes.toList(),
                 color: colors.primary,
+                markers: controller.markers.toList(),
               )),
             ),
 
