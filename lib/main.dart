@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'core/bindings/initial_binding.dart';
+import 'core/navigation/app_routes.dart';
 import 'core/theme/notulensi_theme.dart';
 
 void main() {
@@ -15,14 +17,9 @@ class NotulensiApp extends StatelessWidget {
       title: 'Notulensi',
       debugShowCheckedModeBanner: false,
       theme: NotulensiTheme.darkTheme,
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            'The Obsidian Archive',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
+      initialBinding: InitialBinding(),
+      initialRoute: AppRoutes.home,
+      getPages: AppRoutes.pages,
     );
   }
 }
