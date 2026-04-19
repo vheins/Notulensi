@@ -9,6 +9,7 @@ import '../../features/notes/services/folder_service.dart';
 import '../../features/recording/logic/audio_playback_controller.dart';
 import '../../features/recording/logic/recording_controller.dart';
 import '../../features/recording/services/audio_player_service.dart';
+import '../../features/recording/services/session_recovery_service.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
 import '../../features/storage/services/silence_trimmer.dart';
@@ -31,6 +32,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<FolderService>(() => FolderService(isarService: Get.find<IsarService>()));
     Get.lazyPut<TextExportService>(() => TextExportService());
     Get.lazyPut<SilenceTrimmer>(() => SilenceTrimmer());
+    Get.lazyPut<SessionRecoveryService>(() => SessionRecoveryService());
     Get.lazyPut<AdService>(() => AdService(secureStorage: Get.find<SecureStorageService>()));
     Get.lazyPut<NoteManagementService>(
       () => NoteManagementService(isarService: Get.find<IsarService>()),
