@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "app_title": "Notulensi",
+    "archive": "ARCHIVE",
+    "search_notes": "SEARCH NOTES...",
+    "recording": "RECORDING",
+    "listen": "LISTEN",
+    "no_notes": "No notes found.",
+    "processed": "PROCESSED",
+    "key_highlights": "KEY HIGHLIGHTS",
+    "no_action_items": "No action items extracted yet.",
+    "delete_note": "DELETE NOTE?",
+    "cancel": "CANCEL",
+    "delete": "DELETE",
+    "rename_folder": "RENAME FOLDER",
+    "save": "SAVE",
+    "stt_ready": "OFFLINE STT READY",
+    "stt_required": "DOWNLOAD REQUIRED"
+}

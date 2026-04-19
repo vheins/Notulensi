@@ -1,0 +1,19 @@
+{
+    "@@locale": "id",
+    "app_title": "Notulensi",
+    "archive": "ARSIP",
+    "search_notes": "CARI CATATAN...",
+    "recording": "MEREKAM",
+    "listen": "DENGARKAN",
+    "no_notes": "Catatan tidak ditemukan.",
+    "processed": "DIPROSES",
+    "key_highlights": "RINGKASAN UTAMA",
+    "no_action_items": "Belum ada poin tindakan yang diekstraksi.",
+    "delete_note": "HAPUS CATATAN?",
+    "cancel": "BATAL",
+    "delete": "HAPUS",
+    "rename_folder": "UBAH NAMA FOLDER",
+    "save": "SIMPAN",
+    "stt_ready": "STT OFFLINE SIAP",
+    "stt_required": "UNDUHAN DIPERLUKAN"
+}
