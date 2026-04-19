@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/notulensi_theme.dart';
-import '../../../../shared/models/database/meeting_note.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:notulensi/core/theme/notulensi_theme.dart';
+import 'package:notulensi/shared/models/database/meeting_note.dart';
+import 'package:notulensi/features/notes/logic/selection_controller.dart';
 
-class NoteCard extends StatelessWidget {
+class NoteCard extends GetView<SelectionController> {
   final MeetingNote note;
   final VoidCallback onTap;
 
@@ -16,91 +18,58 @@ class NoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<NotulensiColors>()!;
-    
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      color: colors.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      elevation: 0,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
+
+    return Obx(() {
+      final isSelected = controller.isSelected(note.id);
+      final isMultiSelect = controller.isMultiSelectMode.value;
+
+      return GestureDetector(
+        onTap: isMultiSelect ? () => controller.toggleSelection(note.id) : onTap,
+        onLongPress: () => controller.toggleSelection(note.id),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          decoration: BoxDecoration(
+            color: isSelected ? colors.primary.withAlpha(40) : colors.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: isSelected ? colors.primary : colors.primary.withAlpha(20),
+              width: isSelected ? 2 : 1,
+            ),
+          ),
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Text(
+              if (isMultiSelect) ...[
+                Icon(
+                  isSelected ? Icons.check_circle_rounded : Icons.radio_button_unchecked_rounded,
+                  color: isSelected ? colors.primary : colors.textLow,
+                ),
+                const SizedBox(width: 16),
+              ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
                       note.title,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontSize: 18,
-                        color: colors.textHigh,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: colors.textHigh,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: colors.primary.withAlpha(50),
-                      borderRadius: BorderRadius.circular(4),
+                    const SizedBox(height: 4),
+                    Text(
+                      DateFormat('MMM dd, yyyy').format(note.createdAt),
+                      style: TextStyle(color: colors.textLow, fontSize: 12),
                     ),
-                    child: Text(
-                      'AUDIO',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: colors.primary,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              Text(
-                note.transcript.isNotEmpty 
-                  ? note.transcript 
-                  : 'No transcript available',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: colors.textLow,
+                  ],
                 ),
               ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Icon(Icons.access_time, size: 14, color: colors.textLow),
-                  const SizedBox(width: 4),
-                  Text(
-                    DateFormat('MMM dd, yyyy').format(note.createdAt),
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: colors.textLow,
-                    ),
-                  ),
-                  const Spacer(),
-                  if (note.tags.isNotEmpty)
-                    ...note.tags.take(2).map((tag) => Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Text(
-                        '#$tag',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colors.primary,
-                        ),
-                      ),
-                    )),
-                ],
-              ),
+              Icon(Icons.chevron_right_rounded, color: colors.textLow),
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
