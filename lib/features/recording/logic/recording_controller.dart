@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import '../../notes/services/note_management_service.dart';
 import '../../intelligence/services/stt_service.dart';
 import '../../../core/permissions/permission_service.dart';
-import '../../../core/navigation/app_routes.dart';
 import '../services/audio_recording_service.dart';
-import '../presentation/widgets/waveform_visualizer.dart';
 
 class RecordingController extends GetxController {
   // Use Get.find lazily
@@ -19,7 +17,6 @@ class RecordingController extends GetxController {
   final isRecording = false.obs;
   final duration = Duration.zero.obs;
   final transcript = ''.obs;
-  final markers = <WaveformMarker>[].obs;
   String? currentAudioPath;
 
   Timer? _timer;
@@ -28,25 +25,23 @@ class RecordingController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Initialize STT early to reduce delay
+    // Initialize STT early
     _sttService.init();
   }
 
   Future<void> startRecording() async {
     print('DEBUG: RecordingController.startRecording() triggered');
     
-    // Check and request microphone permission
-    final hasPermission = await _permissionService.requestMicrophone();
-    if (!hasPermission) {
-      print('DEBUG: Microphone permission denied');
-      Get.snackbar('Permission Denied', 'Microphone access is required for recording.');
+    // Check and request permissions (Mic + Bluetooth for STT)
+    final hasMic = await _permissionService.requestMicrophone();
+    if (!hasMic) {
+      Get.snackbar('Permission Denied', 'Microphone access is required.');
       return;
     }
 
     // Start Actual Audio Recording FIRST
     currentAudioPath = await _recordingService.start();
     if (currentAudioPath == null) {
-      print('DEBUG: Failed to start audio recorder');
       Get.snackbar('Error', 'Failed to start audio recording.');
       return;
     }
@@ -56,22 +51,26 @@ class RecordingController extends GetxController {
     duration.value = Duration.zero;
     transcript.value = '';
 
-    // Start Real STT
-    // Give STT a small delay to ensure audio source is not contested
-    Future.delayed(const Duration(milliseconds: 500), () {
-      if (isRecording.value) {
+    // Start Real STT with explicit check
+    if (_sttService.isAvailable.value) {
+      _sttService.startListening(onResult: (text) {
+        print('DEBUG: STT Callback update: "$text"');
+        transcript.value = text;
+      });
+    } else {
+      print('DEBUG: STT not available at start, re-initializing...');
+      await _sttService.init();
+      if (_sttService.isAvailable.value) {
         _sttService.startListening(onResult: (text) {
-          print('DEBUG: STT Callback with text: "$text"');
           transcript.value = text;
         });
       }
-    });
+    }
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       duration.value += const Duration(seconds: 1);
     });
 
-    // Simulate live amplitudes for visualizer
     _amplitudeTimer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       final random = Random();
       amplitudes.add(random.nextDouble());
@@ -79,7 +78,7 @@ class RecordingController extends GetxController {
     });
   }
 
-void stopRecording() {
+  void stopRecording() {
     print('DEBUG: RecordingController.stopRecording() called');
     isRecording.value = false;
     _timer?.cancel();
@@ -88,47 +87,46 @@ void stopRecording() {
     _recordingService.stop();
   }
 
-  void addMarker({String? label}) {
-    if (!isRecording.value) return;
-    markers.add(WaveformMarker(timestamp: duration.value, label: label));
-  }
-
   Future<void> stopAndSave() async {
     print('DEBUG: RecordingController.stopAndSave() starting');
-
+    
+    // Capture values
     final finalTranscript = transcript.value;
     final finalDuration = duration.value;
-
+    
+    // Ensure stop is awaited
     final stoppedPath = await _recordingService.stop();
     final audioFileToSave = stoppedPath ?? currentAudioPath;
-
+    
     stopRecording();
 
     try {
       if (audioFileToSave != null || finalTranscript.isNotEmpty || finalDuration.inSeconds > 1) {
         final title = 'Recording ${DateTime.now().toString().substring(0, 16)}';
+        
+        // Final fallback text
+        String cleanTranscript = finalTranscript.trim();
+        if (cleanTranscript.isEmpty) {
+          if (!_sttService.isAvailable.value) {
+            cleanTranscript = 'STT Error: Engine not available on this device.';
+          } else {
+            cleanTranscript = 'No speech detected during recording.';
+          }
+        }
 
-        final cleanTranscript = finalTranscript.trim().isEmpty
-            ? 'No transcript generated (Check microphone/internet).'
-            : finalTranscript;
-
-        final noteId = await _noteManagementService.createNoteWithAudio(
-          title: title,
+        await _noteManagementService.createNoteWithAudio(
+          title: title, 
           transcript: cleanTranscript,
           duration: finalDuration.inSeconds,
           audioPath: audioFileToSave,
         );
-        print('DEBUG: Note saved successfully. Audio: $audioFileToSave, Transcript Length: ${cleanTranscript.length}');
-
-        Get.offNamed(AppRoutes.noteDetail, arguments: {'noteId': noteId});
-      } else {
-        print('DEBUG: Nothing to save (Empty audio and transcript)');
-        Get.back();
+        print('DEBUG: Saved Note. Transcript: "$cleanTranscript"');
       }
     } catch (e) {
-      print('DEBUG: Error during note creation: $e');
-      Get.back();
+      print('DEBUG: Error saving note: $e');
     }
+
+    Get.back();
   }
 
   @override

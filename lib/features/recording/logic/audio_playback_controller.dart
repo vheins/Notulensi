@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import '../services/audio_player_service.dart';
@@ -11,26 +12,28 @@ class AudioPlaybackController extends GetxController {
   final duration = Duration.zero.obs;
   final position = Duration.zero.obs;
 
+  final List<StreamSubscription> _subscriptions = [];
+
   @override
   void onInit() {
     super.onInit();
     
-    _service.onPlayerStateChanged.listen((state) {
+    _subscriptions.add(_service.onPlayerStateChanged.listen((state) {
       playerState.value = state;
-    });
+    }));
 
-    _service.onDurationChanged.listen((d) {
+    _subscriptions.add(_service.onDurationChanged.listen((d) {
       duration.value = d;
-    });
+    }));
 
-    _service.onPositionChanged.listen((p) {
+    _subscriptions.add(_service.onPositionChanged.listen((p) {
       position.value = p;
-    });
+    }));
 
-    _service.onPlayerComplete.listen((_) {
+    _subscriptions.add(_service.onPlayerComplete.listen((_) {
       playerState.value = PlayerState.completed;
       position.value = Duration.zero;
-    });
+    }));
   }
 
   Future<void> play(String path) async {
@@ -55,7 +58,10 @@ class AudioPlaybackController extends GetxController {
 
   @override
   void onClose() {
-    _service.dispose();
+    for (var sub in _subscriptions) {
+      sub.cancel();
+    }
+    _service.stop(); // Stop audio when leaving screen
     super.onClose();
   }
 }
