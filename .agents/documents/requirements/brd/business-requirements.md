@@ -18,8 +18,8 @@ Professionals and students frequently attend sensitive meetings where cloud-base
 ## 4. Value Proposition
 For privacy-conscious professionals who need structured meeting notes without cloud risks, Notulensi is a 100% offline Flutter application that transcribes and automatically structures audio locally. 
 - **Total Privacy:** Local on-device Speech-to-Text (STT) ensures zero bytes are sent to the cloud, guaranteeing full data residency and compliance.
-- **Instant Structure:** Rule-based parsing provides instant extraction of deadlines and action items deterministically, avoiding "AI processing" delays and hallucinations.
-- **Lightweight Speed:** Optimized local storage (Isar/Hive) provides instant search capabilities and fast startup.
+- **Instant Structure:** Rule-based parsing provides instant extraction of deadlines and action items deterministically, avoiding "AI processing" delays and hallucinations (See ADR-002: Local-Only AI).
+- **Lightweight Speed:** Optimized local storage via Isar Database (See ADR-001) provides instant search capabilities and fast startup.
 
 ## 5. Scope (Phased Evolution)
 The project is strictly limited to deterministic, local storage to ensure 100% privacy and zero-server dependency for data processing.
