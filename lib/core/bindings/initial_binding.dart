@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../features/intelligence/services/extraction_service.dart';
 import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/services/note_management_service.dart';
@@ -19,6 +20,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<BiometricService>(() => BiometricService());
     Get.lazyPut<IsarService>(() => IsarService(), fenix: true);
     Get.lazyPut<AudioPlayerService>(() => AudioPlayerService());
+    Get.lazyPut<ExtractionService>(() => ExtractionService());
     Get.lazyPut<NoteManagementService>(
       () => NoteManagementService(isarService: Get.find<IsarService>()),
     );
