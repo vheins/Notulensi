@@ -23,12 +23,11 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
-          // PRO Status Card
           Obx(() => _buildStatusCard(
             context,
             title: adService.isPro.value ? 'PRO ACCESS ACTIVE' : 'FREE TIER',
-            subtitle: adService.isPro.value 
-              ? 'Enjoy ad-free experience and premium features.' 
+            subtitle: adService.isPro.value
+              ? 'Enjoy ad-free experience and premium features.'
               : 'Unlock 24h Pro access by watching a short ad.',
             icon: Icons.auto_awesome_rounded,
             color: colors.primary,
@@ -38,9 +37,14 @@ class SettingsScreen extends StatelessWidget {
           const SizedBox(height: 32),
           _buildSectionHeader('SECURITY'),
           _buildSettingTile(
-            label: 'BIOMETRIC LOCK',
+            context: context,
+            label: 'BIOMETRIC LOCK (SAFEBOX)',
             icon: Icons.fingerprint_rounded,
-            trailing: Switch(value: true, onChanged: (v) {}, activeTrackColor: colors.primary),
+            trailing: Switch(
+              value: false,
+              onChanged: (v) {},
+              activeTrackColor: colors.primary,
+            ),
           ),
           _buildSettingTile(
             label: 'PRIVACY REDACTION',
@@ -95,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingTile({required String label, required IconData icon, Widget? trailing, VoidCallback? onTap}) {
+  Widget _buildSettingTile({required String label, required IconData icon, Widget? trailing, VoidCallback? onTap, BuildContext? context}) {
     return ListTile(
       onTap: onTap,
       contentPadding: EdgeInsets.zero,

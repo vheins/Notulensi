@@ -80,7 +80,35 @@ class StorageDashboardScreen extends GetView<StorageDashboardController> {
 
               const SizedBox(height: 48),
 
-              // Action
+              // Low storage warning
+              Obx(() {
+                if (controller.lowStorageWarning.value) {
+                  return Container(
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(bottom: 24),
+                    decoration: BoxDecoration(
+                      color: colors.error.withAlpha(20),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: colors.error.withAlpha(50)),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.warning_amber_rounded, color: colors.error),
+                        const SizedBox(width: 12),
+                        const Expanded(
+                          child: Text(
+                            'Storage running low. Consider deleting old recordings.',
+                            style: TextStyle(color: Colors.white70, fontSize: 12),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              }),
+
+              // Actions
               OutlinedButton.icon(
                 onPressed: () => controller.calculateUsage(),
                 icon: const Icon(Icons.refresh_rounded),
@@ -90,10 +118,41 @@ class StorageDashboardScreen extends GetView<StorageDashboardController> {
                   side: BorderSide(color: colors.primary.withAlpha(100)),
                 ),
               ),
+              const SizedBox(height: 12),
+              OutlinedButton.icon(
+                onPressed: () => _showCleanupDialog(context),
+                icon: const Icon(Icons.delete_sweep_rounded),
+                label: const Text('CLEANUP OLD RECORDINGS'),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                  side: BorderSide(color: colors.error.withAlpha(100)),
+                  foregroundColor: colors.error,
+                ),
+              ),
             ],
           ),
         );
       }),
+    );
+  }
+
+  void _showCleanupDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Cleanup Old Recordings'),
+        content: const Text('Delete recordings older than 30 days?'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('CANCEL')),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              controller.deleteOldRecordings(daysOld: 30);
+            },
+            child: const Text('DELETE', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
     );
   }
 }
