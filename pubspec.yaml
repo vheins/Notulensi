@@ -23,12 +23,13 @@ dependencies:
   # Security
   flutter_secure_storage: ^9.0.0
   local_auth: ^2.1.8
+  encrypt: ^5.0.3
   
   # UI & Design System
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.10+1
   
-  # Intelligence (Optional for now, but planned)
+  # Intelligence
   speech_to_text: ^7.3.0
   record: ^5.1.0
   audioplayers: ^5.2.1
@@ -45,10 +46,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  
-  # fonts:
-  #   - family: Geist
-  #     fonts:
-  #       - asset: assets/fonts/Geist-Regular.ttf
-  #       - asset: assets/fonts/Geist-Bold.ttf
-  #         weight: 700
