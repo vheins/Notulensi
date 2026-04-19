@@ -3,4 +3,4 @@
 ## Navigation
 - [Overview](./overview.md)
 
-Ensures AI models return valid JSON and handles API failures gracefully.
+Ensures local regex extraction logic returns valid results and handles varied transcript formatting gracefully.

@@ -5,8 +5,7 @@
 - [API](../../api/processing/api-processing.md)
 - [Tests](../../testing/processing/overview.md)
 
-| Feature | Description | Doc |
+| Feature | Description | Reference |
 |---------|-------------|-----|
-| **Transcription** | Converts audio data to text format. | [ai_service.dart](../../../../lib/services/ai_service.dart) |
-| **Highlighting** | Identifies key information and action items. | [ai_service.dart](../../../../lib/services/ai_service.dart) |
-| **Summarization** | Generates a concise summary of the recording. | [ai_service.dart](../../../../lib/services/ai_service.dart) |
+| **Rule-Based Highlight Extraction** | Identifies action items and deadlines using local Regex patterns. | [parser_service.dart](../../../../lib/services/parser_service.dart) |
+| **Local Note Structuring** | Links extracted highlights to the parent meeting note record in Isar. | [note_repository.dart](../../../../lib/services/note_repository.dart) |

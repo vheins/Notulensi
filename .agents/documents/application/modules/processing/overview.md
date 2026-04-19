@@ -6,23 +6,23 @@
 - [Tests](../../testing/processing/overview.md)
 
 ## 1. Intro
-- **Role:** Feature (Utility)
-- **Value:** Transforms raw audio/transcripts into usable data.
+- **Role:** Support (Domain)
+- **Value:** Automatically extracts action items and deadlines from transcripts locally.
 
 ## 2. Features
 | Feature | Desc | Doc |
 |---------|------|-----|
-| **AI Processing** | Transcription and highlight generation | [processing.md](./processing.md) |
+| **Rule-Based Extraction** | Regex-based highlight generation | [processing.md](./processing.md) |
 
 ## 3. Architecture
 ```mermaid
 flowchart TB
-    UI["Processing UI"] --> Cubit["ProcessingCubit"]
-    Cubit --> AIService["OpenAI/Gemini Service"]
-    Cubit --> Storage["Storage Service"]
+    Isolate["Background Isolate (Compute)"] --> RegexEngine["Regex Pipeline"]
+    RegexEngine --> DataMapper["Data Mapper"]
+    DataMapper --> Repo["NoteRepository (Isar)"]
 ```
 
 ## 4. Dependencies
 - **Store:** Isar Database
-- **External:** LLM APIs
+- **External:** None
 - **Internal:** Recording, Storage
