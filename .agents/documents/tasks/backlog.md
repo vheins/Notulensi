@@ -25,6 +25,7 @@
 - **[TASK-016] Share Sheet Integration:** Use `share_plus` to handle exported file distribution.
 
 ## Phase 5: Polish & Monetization
+- **[TASK-017] AdMob Integration:** Implement banner ads on Note List and Settings screens.
 - **[TASK-018] Storage Settings:** Build UI to show disk usage and manage recording files.
 - **[TASK-019] Edge Case Handling:** Implement error states for permissions, storage full, and recording interruptions.
 - **[TASK-020] Performance Optimization:** Benchmark transcription lag and Isar query speed; optimize where needed.

@@ -40,8 +40,9 @@
 
 ## 5. Non-Functional
 - **AC-011 (Privacy Boundary):**
-  - **THE** system **SHALL NOT** perform any network requests or transmit data to external servers.
-- **AC-012 (Zero Internet Mandate):**
-  - **THE** application **SHALL** remain fully functional and perform all core tasks (Recording, STT, Highlighting, Exporting) in environments with no internet access.
+  - **THE** system **SHALL NOT** include any networking code that transmits audio or transcript data to external servers.
+- **AC-012 (Ad Display):**
+  - **WHERE** the user is in the main list or settings,
+  - **THE** system **SHALL** display a non-intrusive AdMob banner.
 - **AC-013 (Storage Management):**
   - **THE** system **SHALL** display the total storage used by all meeting records in the 'Settings' menu.

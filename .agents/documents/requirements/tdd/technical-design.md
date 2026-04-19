@@ -108,4 +108,5 @@ As per `.agents/rules/test-architecture.md`, all features must be verified acros
 
 ### 7.3 Phase 3: Export & Polishing
 - PDF/TXT export generation.
+- AdMob banner integration.
 - Storage management dashboard in Settings.

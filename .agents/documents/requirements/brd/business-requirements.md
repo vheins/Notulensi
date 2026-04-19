@@ -39,7 +39,7 @@ The MVP is strictly limited to deterministic, rule-based text extraction and loc
 ## 6. Assumptions
 - **User Assumptions:** Users are willing to trade "perfect" probabilistic AI summaries for "good enough" local, deterministic, and private rule-based extraction. Privacy is a stronger driver than cloud collaboration. Users prefer smaller APK sizes (< 25MB) over massive high-accuracy built-in models.
 - **Technical Assumptions:** Modern mobile hardware can handle real-time STT without excessive battery drain or UI lag. Rule-based parsing is sufficient to extract key information from unstructured speech.
-- **Business Assumptions:** The privacy-first market segment is large enough to sustain the app. Monetization strategy will focus on a one-time "Pro" purchase for advanced local features, ensuring zero data leakage and maintaining the offline mandate.
+- **Business Assumptions:** The privacy-first market segment is large enough to sustain the app. Users will tolerate basic monetization (AdMob interstitials) or opt for a one-time "Pro" purchase over recurring subscriptions.
 
 ## 7. Feasibility
 **Verdict: GO**
