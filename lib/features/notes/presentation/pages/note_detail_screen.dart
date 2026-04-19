@@ -35,12 +35,21 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
               backgroundColor: colors.background,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                title: Text(
-                  note.title,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: colors.textHigh,
-                    fontSize: 20,
-                  ),
+                title: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SizedBox(
+                      width: constraints.maxWidth * 0.8,
+                      child: Text(
+                        note.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: colors.textHigh,
+                          fontSize: 18,
+                        ),
+                      ),
+                    );
+                  }
                 ),
                 centerTitle: false,
               ),
