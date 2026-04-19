@@ -15,8 +15,19 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    val project = this
+    plugins.forEach { plugin ->
+        if (plugin is com.android.build.gradle.LibraryPlugin) {
+            val extension = project.extensions.getByName("android") as com.android.build.gradle.LibraryExtension
+            extension.namespace = "com.vheins.notulensi.patch." + project.name.replace("-", "_")
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {
