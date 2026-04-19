@@ -17,6 +17,7 @@ import '../../features/recording/services/audio_player_service.dart';
 import '../../features/recording/services/session_recovery_service.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
+import '../../features/storage/logic/storage_dashboard_controller.dart';
 import '../../features/storage/services/silence_trimmer.dart';
 import '../../features/storage/services/storage_monitor_service.dart';
 import '../ads/ad_service.dart';
@@ -68,6 +69,9 @@ class InitialBinding extends Bindings {
         isarService: Get.find<IsarService>(),
         folderService: Get.find<FolderService>(),
       ),
+    );
+    Get.lazyPut<StorageDashboardController>(
+      () => StorageDashboardController(isarService: Get.find<IsarService>()),
     );
     Get.lazyPut<SelectionController>(() => SelectionController());
     Get.lazyPut<AudioPlaybackController>(

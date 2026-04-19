@@ -8,6 +8,7 @@ import 'features/notes/presentation/pages/home_screen.dart';
 import 'features/notes/presentation/pages/note_detail_screen.dart';
 import 'features/notes/presentation/pages/folder_detail_screen.dart';
 import 'features/recording/presentation/pages/recording_screen.dart';
+import 'features/storage/presentation/pages/storage_dashboard.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +41,7 @@ class NotulensiApp extends StatelessWidget {
         GetPage(name: '/notes/:id', page: () => const NoteDetailScreen()),
         GetPage(name: '/folders/:id', page: () => const FolderDetailScreen()),
         GetPage(name: '/recording', page: () => const RecordingScreen()),
+        GetPage(name: '/storage', page: () => const StorageDashboardScreen()),
       ],
     );
   }
