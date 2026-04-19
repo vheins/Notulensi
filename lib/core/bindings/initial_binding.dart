@@ -4,6 +4,7 @@ import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/services/note_management_service.dart';
 import '../../features/notes/services/search_service.dart';
+import '../../features/notes/services/folder_service.dart';
 import '../../features/recording/logic/audio_playback_controller.dart';
 import '../../features/recording/logic/recording_controller.dart';
 import '../../features/recording/services/audio_player_service.dart';
@@ -24,6 +25,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<AudioPlayerService>(() => AudioPlayerService());
     Get.lazyPut<ExtractionService>(() => ExtractionService());
     Get.lazyPut<SearchService>(() => SearchService(isarService: Get.find<IsarService>()));
+    Get.lazyPut<FolderService>(() => FolderService(isarService: Get.find<IsarService>()));
     Get.lazyPut<NoteManagementService>(
       () => NoteManagementService(isarService: Get.find<IsarService>()),
     );
