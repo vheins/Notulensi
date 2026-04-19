@@ -47,7 +47,6 @@ This document breaks down the tasks from the backlog and maps them to sprint cyc
 
 | Task ID | Description | Story Points | Acceptance Criteria |
 | :--- | :--- | :---: | :--- |
-| **TASK-017** | AdMob Integration | 3 | Banner ads are displayed correctly on Note List and Settings screens without covering content. |
 | **TASK-018** | Storage Settings | 5 | Users can view disk usage and delete old recordings from a visual Settings dashboard. |
 | **TASK-019** | Edge Case Handling | 5 | App gracefully handles denied mic permissions, full storage, and incoming calls during recording. |
 | **TASK-020** | Performance Optimization | 5 | Transcription latency is < 500ms; UI does not freeze during long recordings or searches. |

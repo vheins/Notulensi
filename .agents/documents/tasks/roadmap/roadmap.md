@@ -36,7 +36,6 @@ This roadmap maps the project backlog and requirements into 3 core development p
     *   Integrate PDF generation for formatted summaries containing structured highlights.
     *   Integrate native system share sheet for file distribution (`share_plus`).
 *   **Milestone 3.2: Monetization & Performance Tuning**
-    *   Integrate AdMob banner ads on Note List and Settings screens.
     *   Build a storage management dashboard within Settings.
     *   Handle edge cases (e.g., permissions denied, storage full, interruptions).
     *   Optimize transcription lag (< 500ms) and Isar query speed.

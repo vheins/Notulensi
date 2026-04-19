@@ -9,7 +9,6 @@
 | **Rule-based Processing** | Must | Extracting deadlines/action items deterministically. | S |
 | **Note CRUD & Search** | Must | Management and discovery of captured notes. | S |
 | **Export to TXT/PDF** | Must | Portability and filing without cloud. | S |
-| **AdMob (Banner/Interstitial)** | Should | Basic monetization for launch. | S |
 | **Speaker Diarization** | Could | Hard to do accurately offline/locally. | XL |
 | **Cloud Sync** | Won't | Directly violates "100% Offline" core objective. | L |
 

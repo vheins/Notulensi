@@ -37,7 +37,6 @@ This document specifies the user interactions and detailed functional behaviors 
 - **Top Bar**: App name and Search input field.
 - **List View**: Paginated list of meeting notes.
 - **FAB**: Prominent 'Record' button with pulse animation.
-- **Bottom Banner**: AdMob non-intrusive ad.
 
 ### 3.2 Recording Screen (Active)
 - **Header**: Duration timer (HH:MM:SS).

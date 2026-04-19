@@ -18,7 +18,6 @@
 ## 3. Pricing Landscape
 * **Patterns:** $10-$30/month subscription is standard for cloud transcription.
 * **Ranges:** Free (limited) to $240+/year (Pro).
-* **Point Recommendation:** One-time purchase ($5-$15) or "Free with Ads" (AdMob) + Pro upgrade for "Advanced Offline Models."
 
 ## 4. Strategic Positioning
 * **Segment to Avoid:** High-volume enterprise collaboration (Zoom/Teams bots).

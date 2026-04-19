@@ -7,7 +7,6 @@
 
 ## 2. Market Assumptions
 * **Assumption:** The "Privacy-First" market segment is large enough to sustain an app. (Risk: Medium).
-* **Assumption:** AdMob revenue is viable for a utility app with infrequent usage. (Risk: High).
 
 ## 3. Technical Assumptions
 * **Assumption:** Mobile hardware can handle real-time STT without excessive battery drain. (Risk: High | Experiment: Stress test STT on mid-range Android/iOS).
@@ -23,5 +22,4 @@
 | 1 | Technical | High | On-device STT must be accurate enough and fast. | PoC with Vosk/SpeechToText plugin. |
 | 2 | User | High | Do users value offline over "AI perfection"? | User interview / Competitor review. |
 | 3 | Technical | Medium | Rule-based parsing efficiency on raw transcripts. | Data testing on real meeting transcripts. |
-| 4 | Business | Medium | AdMob viability and user tolerance for ads. | Competitor ad-strategy research. |
 | 5 | Technical | Medium | APK size vs. Model performance trade-off. | Binary size analysis with modular models. |

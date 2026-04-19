@@ -51,7 +51,7 @@
 - **Platform**: Flutter (Android/iOS).
 - **Database**: Isar (Local, NoSQL).
 - **Size**: < 25MB initial APK.
-- **Networking**: Strictly limited to AdMob (unobtrusive banners) and optional OS language pack management.
+- **Networking**: None. The application is strictly 100% offline.
 
 ## 6. Success Metrics
 - **Transcription Latency**: < 500ms from speech to UI text update.

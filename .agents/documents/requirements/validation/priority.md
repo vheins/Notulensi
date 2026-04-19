@@ -7,7 +7,6 @@
 | **Isar/Hive Implementation** | Must | Foundation for all data management. |
 | **Rule-based Keyword Parser** | Must | Primary differentiator from simple recording apps. |
 | **Export (PDF/TXT)** | Must | Final deliverable for the user's workflow. |
-| **AdMob Integration** | Should | Necessary for sustainable free-tier maintenance. |
 | **Advanced Local Models** | Could | High effort, optional "pro" upgrade. |
 
 ## 2. Top 3 Quick Wins
