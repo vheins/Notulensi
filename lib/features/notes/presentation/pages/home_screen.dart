@@ -19,7 +19,7 @@ class HomeScreen extends GetView<NoteListController> {
           SliverAppBar(
             floating: true,
             pinned: true,
-            expandedHeight: 120,
+            expandedHeight: 180,
             backgroundColor: colors.background,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -28,9 +28,35 @@ class HomeScreen extends GetView<NoteListController> {
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   letterSpacing: 2,
                   color: colors.textHigh,
+                  fontSize: 20,
                 ),
               ),
               centerTitle: false,
+              background: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: TextField(
+                      onChanged: controller.updateSearch,
+                      style: TextStyle(color: colors.textHigh),
+                      decoration: InputDecoration(
+                        hintText: 'SEARCH NOTES...',
+                        hintStyle: TextStyle(color: colors.textLow, fontSize: 12, letterSpacing: 1),
+                        prefixIcon: Icon(Icons.search, color: colors.textLow),
+                        filled: true,
+                        fillColor: colors.surface,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 48), // Space for the title
+                ],
+              ),
             ),
           ),
 
