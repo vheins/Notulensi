@@ -26,6 +26,7 @@ import '../../features/storage/services/storage_monitor_service.dart';
 import '../ads/ad_service.dart';
 import '../database/isar_service.dart';
 import '../hardware/volume_button_listener.dart';
+import '../integration/calendar_bridge.dart';
 import '../permissions/permission_service.dart';
 import '../security/secure_storage_service.dart';
 
@@ -48,6 +49,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<TextExportService>(() => TextExportService());
     Get.lazyPut<PdfTemplateEngine>(() => PdfTemplateEngine());
     Get.lazyPut<QrSyncService>(() => QrSyncService());
+    Get.lazyPut<CalendarBridge>(() => CalendarBridge());
     Get.lazyPut<SilenceTrimmer>(() => SilenceTrimmer());
     Get.lazyPut<SessionRecoveryService>(() => SessionRecoveryService());
     Get.lazyPut<StorageMonitorService>(() => StorageMonitorService());
