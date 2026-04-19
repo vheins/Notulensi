@@ -23,6 +23,7 @@ import '../../features/security/services/biometric_service.dart';
 import '../../features/storage/logic/storage_dashboard_controller.dart';
 import '../../features/storage/services/silence_trimmer.dart';
 import '../../features/storage/services/storage_monitor_service.dart';
+import '../../features/storage/services/backup_service.dart';
 import '../ads/ad_service.dart';
 import '../database/isar_service.dart';
 import '../hardware/volume_button_listener.dart';
@@ -50,6 +51,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<PdfTemplateEngine>(() => PdfTemplateEngine());
     Get.lazyPut<QrSyncService>(() => QrSyncService());
     Get.lazyPut<CalendarBridge>(() => CalendarBridge());
+    Get.lazyPut<BackupService>(() => BackupService());
     Get.lazyPut<SilenceTrimmer>(() => SilenceTrimmer());
     Get.lazyPut<SessionRecoveryService>(() => SessionRecoveryService());
     Get.lazyPut<StorageMonitorService>(() => StorageMonitorService());
