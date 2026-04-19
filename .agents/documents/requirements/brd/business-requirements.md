@@ -21,31 +21,36 @@ For privacy-conscious professionals who need structured meeting notes without cl
 - **Instant Structure:** Rule-based parsing provides instant extraction of deadlines and action items deterministically, avoiding "AI processing" delays and hallucinations.
 - **Lightweight Speed:** Optimized local storage (Isar/Hive) provides instant search capabilities and fast startup.
 
-## 5. Scope (MVP)
-The MVP is strictly limited to deterministic, rule-based text extraction and local storage to ensure 100% privacy and zero-server dependency.
+## 5. Scope (MVP & Beyond)
+The project is strictly limited to deterministic, local storage to ensure 100% privacy and zero-server dependency for data processing.
 
-**In Scope (Must Have):**
-- Offline Audio Recording
-- Offline Transcription (STT) via local engines (e.g., Vosk/SpeechToText)
+**In Scope (Phase 1 & 2):**
+- Offline Audio Recording & Transcription
 - Local Note Storage (Isar/Hive)
-- Rule-based Processing (Keyword/Regex extraction for deadlines and action items)
+- Rule-based Processing (Regex extraction for deadlines and action items)
 - Note CRUD & Search Operations
-- Export to TXT/PDF for portability
+- Export to TXT/PDF (Standard Templates)
+
+**Advanced Features (Phase 3 & 4):**
+- **Physical Safe-Box**: Local database encryption with Biometric Lock.
+- **Smart Speaker Tagging**: Local Voice Activity Detection (VAD) for speaker separation.
+- **Privacy Masking**: Automatic regex-based local redaction of sensitive info.
+- **Local Context Linking**: Inter-note semantic search and cross-linking.
+- **Audio-to-Calendar**: Local system calendar integration for detected deadlines.
+- **Visual Waveform Markers**: User-defined bookmarks during live recording.
+- **Offline Template Engine**: Customizable professional export formats.
 
 **Out of Scope (Won't/Deferred):**
 - Cloud Sync (Directly violates the core "100% Offline" objective)
-- Multi-Speaker Diarization (High complexity, deferred from MVP)
+- Large-scale Diarization (Deferred until lightweight local models are viable)
 
 ## 6. Assumptions
-- **User Assumptions:** Users are willing to trade "perfect" probabilistic AI summaries for "good enough" local, deterministic, and private rule-based extraction. Privacy is a stronger driver than cloud collaboration. Users prefer smaller APK sizes (< 25MB) over massive high-accuracy built-in models.
-- **Technical Assumptions:** Modern mobile hardware can handle real-time STT without excessive battery drain or UI lag. Rule-based parsing is sufficient to extract key information from unstructured speech.
-- **Business Assumptions:** The privacy-first market segment is large enough to sustain the app. Users will tolerate basic monetization (AdMob interstitials) or opt for a one-time "Pro" purchase over recurring subscriptions.
+- **User Assumptions:** Users are willing to trade "perfect" probabilistic AI summaries for "good enough" local, deterministic, and private rule-based extraction. Privacy is a stronger driver than cloud collaboration.
+- **Technical Assumptions:** Modern mobile hardware can handle real-time STT and local database encryption without excessive battery drain.
+- **Business Assumptions:** The privacy-first market segment is large enough to sustain the app via AdMob rewards and a one-time "Pro" purchase for advanced local features.
 
 ## 7. Feasibility
 **Verdict: GO**
-- **Technical (8/10):** Highly feasible due to the elimination of server-side infrastructure. Using Flutter with local STT engines and local databases provides a robust technical foundation.
-- **Financial:** Viable with $0 backend infrastructure costs, enabling excellent scaling without increasing operational overhead.
-- **Timeline:** A functional MVP can be built in 4-6 weeks due to the absence of backend/cloud complexity.
-- **Risks & Mitigations:** 
-  - *STT Accuracy & APK Size:* Mitigated by using smaller default models with options to download larger, more accurate models on-demand.
-  - *Rule Hallucination:* Mitigated by keeping extraction rules simple (regex/keywords) and allowing manual text overrides in the UI.
+- **Technical (8/10):** Highly feasible using Flutter with local engines. Biometric and Calendar APIs are well-supported locally.
+- **Financial:** Viable with $0 backend infrastructure costs.
+- **Timeline:** Core MVP in 4-6 weeks; Advanced features rolled out in subsequent 2-week sprints.

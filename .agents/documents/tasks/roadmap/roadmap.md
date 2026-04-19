@@ -1,42 +1,47 @@
 # Product Roadmap: Notulensi
 
-This roadmap maps the project backlog and requirements into 3 core development phases as defined in the Technical Design Document.
+This roadmap maps the project backlog and requirements into development phases, focusing on the transition from a local recorder to a comprehensive private meeting assistant.
 
 ## Phase 1: Core Infrastructure
-**Goal:** Establish the foundational architecture, local database, and core audio/STT capabilities.
+**Goal:** Establish foundational architecture, local database, and core audio/STT capabilities.
 
 *   **Milestone 1.1: Project Setup & Database Initialization**
-    *   Initialize Flutter project with a scalable folder structure and basic routing.
-    *   Integrate core tech stack packages (Isar, path_provider, permission_handler).
-    *   Design and implement the Isar local database schemas for Notes and Highlights.
-    *   Implement basic distraction-free UI theme.
+    *   Flutter setup with Isar (unencrypted) and basic routing.
+    *   Core tech stack: `path_provider`, `permission_handler`, `google_mobile_ads`.
 *   **Milestone 1.2: Audio Capture & Transcription Engine**
-    *   Integrate high-quality local audio capture using the `record` package.
-    *   Implement 100% offline STT engine integration.
-    *   Build reactive UI components for real-time transcription display.
-    *   Manage application states for recording (idle, recording, paused, saving).
+    *   Local audio capture using `record`.
+    *   100% offline STT engine integration (System STT/Vosk).
+    *   Reactive UI for live transcription and waveform.
 
-## Phase 2: Feature Implementation
-**Goal:** Develop the core user experience for managing notes and the automated extraction engine.
+## Phase 2: Core Utility & Monetization
+**Goal:** Develop the core user experience and initial monetization.
 
 *   **Milestone 2.1: Note Management & Global Search**
-    *   Build Home Screen dashboard with note list, sorting, and searching functionality.
-    *   Create Note Detail View to display transcripts and highlighted content.
-    *   Implement CRUD operations (Edit/Delete) for individual notes and audio.
-    *   Enable high-performance local search across all collections.
-*   **Milestone 2.2: Rule-Based Extraction Engine**
-    *   Develop deterministic regex-based parser to automatically extract Action Items and Deadlines from text.
-    *   Integrate extraction background tasks for post-transcription processing.
+    *   Home screen with search and CRUD operations.
+    *   Note detail view with transcript and basic highlights.
+*   **Milestone 2.2: Rule-Based Extraction & Export**
+    *   Deterministic regex-based parser for Action Items and Deadlines.
+    *   Basic PDF/TXT export using standard templates.
+*   **Milestone 2.3: AdMob Integration**
+    *   Integrate banner/interstitial ads for revenue.
 
-## Phase 3: Export & Polishing
-**Goal:** Finalize the application with export capabilities, monetization, and production-ready polish.
+## Phase 3: Physical Security & Interaction
+**Goal:** Enhance data protection and user interaction during capture.
 
-*   **Milestone 3.1: Export & File Sharing**
-    *   Implement plain text (TXT) export service.
-    *   Integrate PDF generation for formatted summaries containing structured highlights.
-    *   Integrate native system share sheet for file distribution (`share_plus`).
-*   **Milestone 3.2: Monetization & Performance Tuning**
-    *   Integrate AdMob banner ads on Note List and Settings screens.
-    *   Build a storage management dashboard within Settings.
-    *   Handle edge cases (e.g., permissions denied, storage full, interruptions).
-    *   Optimize transcription lag (< 500ms) and Isar query speed.
+*   **Milestone 3.1: Physical Safe-Box**
+    *   Implement database encryption for Isar.
+    *   Integrate Biometric authentication (Fingerprint/FaceID) to unlock the app.
+*   **Milestone 3.2: Advanced Capture Features**
+    *   Implement **Visual Waveform Markers** (Bookmarks/Stars during recording).
+    *   Basic **Smart Speaker Tagging** (VAD-based separation).
+
+## Phase 4: Smart Local Intelligence
+**Goal:** Add high-value "pro" features that remain 100% offline.
+
+*   **Milestone 4.1: Privacy & Workflow Integration**
+    *   **Privacy Masking**: Local regex-based redaction engine for sensitive data.
+    *   **Audio-to-Calendar**: Local system calendar bridge for extracted deadlines.
+*   **Milestone 4.2: Ecosystem & Personalization**
+    *   **Local Context Linking**: Inter-note relationship mapping and keyword bridging.
+    *   **Offline Template Engine**: Multi-format customizable PDF exports.
+    *   Performance tuning for large encrypted databases.
