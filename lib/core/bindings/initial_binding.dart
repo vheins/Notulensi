@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../features/export/services/text_export_service.dart';
 import '../../features/export/services/pdf_template_engine.dart';
+import '../../features/export/services/qr_sync_service.dart';
 import '../../features/intelligence/services/extraction_service.dart';
 import '../../features/intelligence/services/stt_status_service.dart';
 import '../../features/notes/logic/note_list_controller.dart';
@@ -42,6 +43,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<VersioningService>(() => VersioningService(isarService: Get.find<IsarService>()));
     Get.lazyPut<TextExportService>(() => TextExportService());
     Get.lazyPut<PdfTemplateEngine>(() => PdfTemplateEngine());
+    Get.lazyPut<QrSyncService>(() => QrSyncService());
     Get.lazyPut<SilenceTrimmer>(() => SilenceTrimmer());
     Get.lazyPut<SessionRecoveryService>(() => SessionRecoveryService());
     Get.lazyPut<StorageMonitorService>(() => StorageMonitorService());

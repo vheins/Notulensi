@@ -46,6 +46,9 @@ dependencies:
   pdf: ^3.12.0
   printing: ^5.14.3
   fl_chart: ^1.2.0
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^7.2.0
+  archive: ^4.0.9
 
 dev_dependencies:
   flutter_test:
