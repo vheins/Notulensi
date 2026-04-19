@@ -1,10 +1,12 @@
-# Feature: Export
+# Export
 
-## Workflows
-- **PDF Generation**: Fetch note + highlights -> Layout document -> Save to temp storage.
-- **Share Trigger**: Call native share sheet with generated file path.
-- **Cleanup**: Delete temporary export files after the share session terminates.
+## Navigation
+- [Overview](./overview.md)
+- [API](../../api/export/api-export.md)
+- [Tests](../../testing/export/overview.md)
 
-## User Stories
-- **US-013**: Export notes as TXT.
-- **US-014**: Export notes as PDF summary.
+| Feature | Description | Doc |
+|---------|-------------|-----|
+| **PDF Generation** | Converts notes and highlights into a PDF document. | [export_service.dart](../../../../lib/services/export_service.dart) |
+| **TXT Export** | Exports transcript and notes as a plain text file. | [export_service.dart](../../../../lib/services/export_service.dart) |
+| **Share Sheet** | Integrates with the OS native share functionality. | [share_plus](https://pub.dev/packages/share_plus) |

@@ -1,10 +1,12 @@
-# Feature: Processing
+# Processing
 
-## Key Patterns
-- **Action Item**: `\b(I|we)\s+(will|shall|must|need to)\s+([^.?!]+)`
-- **Deadline**: `\b(by|on)\s+(Monday|Tuesday|...|tomorrow)\b`
+## Navigation
+- [Overview](./overview.md)
+- [API](../../api/processing/api-processing.md)
+- [Tests](../../testing/processing/overview.md)
 
-## Workflows
-- **Extraction Trigger**: Fires automatically when a recording stops.
-- **Context Parsing**: Identifies sentence boundaries around matched keywords.
-- **Storage Update**: Updates the `MeetingNote` record with new links to `ActionItem` and `Deadline` collections.
+| Feature | Description | Doc |
+|---------|-------------|-----|
+| **Transcription** | Converts audio data to text format. | [ai_service.dart](../../../../lib/services/ai_service.dart) |
+| **Highlighting** | Identifies key information and action items. | [ai_service.dart](../../../../lib/services/ai_service.dart) |
+| **Summarization** | Generates a concise summary of the recording. | [ai_service.dart](../../../../lib/services/ai_service.dart) |

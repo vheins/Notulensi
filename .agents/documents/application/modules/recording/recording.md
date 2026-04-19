@@ -1,13 +1,12 @@
-# Feature: Recording
+# Recording
 
-## Workflows
-- **STT Model Management**: Check STT model status via `speech_to_text`.
-  - States: `Not Downloaded`, `Downloading`, `Ready`, `Failed`.
-  - State emitted to UI blocks recording unless `Ready`.
-- **Start Recording**: Request mic permission -> Initialize STT -> Open audio stream.
-- **Live Stream**: Simultaneously pipe audio to filesystem and text engine.
-- **Error Handling**: Graceful recovery if mic focus is lost or OS terminates the background task.
+## Navigation
+- [Overview](./overview.md)
+- [API](../../api/recording/api-recording.md)
+- [Tests](../../testing/recording/overview.md)
 
-## User Stories
-- **US-001**: Record audio directly in the app.
-- **US-002**: View real-time transcript updates.
+| Feature | Description | Doc |
+|---------|-------------|-----|
+| **Real-time Capture** | Captures audio input from the microphone. | [audio_service.dart](../../../../lib/services/audio_service.dart) |
+| **Pause/Resume** | Allows pausing and resuming the recording. | [audio_service.dart](../../../../lib/services/audio_service.dart) |
+| **Waveform Visualization** | Shows real-time audio levels. | [waveform_view.dart](../../../../lib/ui/widgets/waveform_view.dart) |

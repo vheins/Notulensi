@@ -1,9 +1,27 @@
-# Module: core_storage
+# Storage Overview
 
-## Responsibility
-The `core_storage` module is responsible for the persistent storage and retrieval of all application data, including database records (Isar) and physical files (audio, exported PDFs).
+## Navigation
+- [Overview](./overview.md)
+- [API](../../api/storage/api-storage.md)
+- [Tests](../../testing/storage/overview.md)
 
-## Architecture
-- **Layer**: Data/Infrastructure.
-- **Engine**: Isar NoSQL Database.
-- **Pattern**: Repository Pattern with Local Data Sources.
+## 1. Intro
+- **Role:** Core Infrastructure
+- **Value:** Ensures all data is persisted and accessible.
+
+## 2. Features
+| Feature | Desc | Doc |
+|---------|------|-----|
+| **Data Persistence** | Local database and file management | [storage.md](./storage.md) |
+
+## 3. Architecture
+```mermaid
+flowchart TB
+    Service["Storage Service"] --> DB["Isar Database"]
+    Service --> Filesystem["OS Local Storage"]
+```
+
+## 4. Dependencies
+- **Store:** Isar Database, Local Filesystem
+- **External:** Path Provider
+- **Internal:** N/A

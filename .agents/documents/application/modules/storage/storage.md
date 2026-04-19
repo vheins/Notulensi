@@ -1,11 +1,12 @@
-# Feature: Storage
+# Storage
 
-## Key Entities (Isar Collections)
-- **MeetingNoteCollection**: Primary record for sessions.
-- **ActionItemCollection**: Linked tasks.
-- **DeadlineCollection**: Linked time-markers.
+## Navigation
+- [Overview](./overview.md)
+- [API](../../api/storage/api-storage.md)
+- [Tests](../../testing/storage/overview.md)
 
-## Workflows
-- **Save Session**: Atomic operation involving audio file naming and Isar record creation.
-- **Full-Text Search**: Optimized query using Isar's native indexing.
-- **Clean Deletion**: Cascading delete ensuring that when a note record is removed, its associated audio file is also purged from the filesystem.
+| Feature | Description | Doc |
+|---------|-------------|-----|
+| **Local DB** | Stores structured note data using Isar. | [isar_service.dart](../../../../lib/services/isar_service.dart) |
+| **File Management** | Manages m4a audio files and exported documents. | [file_service.dart](../../../../lib/services/file_service.dart) |
+| **Backup/Restore** | Provides data export and import capabilities. | [isar_service.dart](../../../../lib/services/isar_service.dart) |
