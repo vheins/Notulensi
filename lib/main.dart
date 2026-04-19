@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'core/theme/notulensi_theme.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class NotulensiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Notulensi',
       debugShowCheckedModeBanner: false,
       theme: NotulensiTheme.darkTheme,

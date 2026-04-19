@@ -44,7 +44,7 @@ sequenceDiagram
 
 ## 5. Public Interface
 ### Classes
-- `SafeBoxGuard`: Cubit/Bloc managing the lock/unlock UI states.
+- `AuthController`: GetxController managing the lock/unlock UI states.
 - `KeyDerivator`: Utility for generating keys from seeds and biometric tokens.
 
 ### Methods

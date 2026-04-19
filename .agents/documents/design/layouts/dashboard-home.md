@@ -4,7 +4,7 @@
 - **Name**: Home Screen (Dashboard & Global Search)
 - **User Role**: Primary User
 - **Goal**: Quickly find past meetings, view local productivity insights, and initiate new recordings.
-- **Framework**: Flutter (`SliverAppBar`, `GridView`, `SliverList`)
+- **Framework**: Flutter (`GetX` for State/Routing, `SliverAppBar`, `GridView`)
 
 ## 2. Layout Structure
 **Grid Strategy**: Fluid Grid for Note Cards, Staggered Stacks for Metrics.

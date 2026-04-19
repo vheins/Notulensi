@@ -2,7 +2,7 @@
 
 ## 1. Design System Info
 - **Name**: Notulensi Core UI
-- **Tech Stack**: Flutter (`ThemeData`, `ThemeExtension`)
+- **Tech Stack**: Flutter (`GetX` for State, `ThemeData`, `ThemeExtension`)
 - **Target**: Mobile (iOS & Android)
 - **Style Direction**: Clean, Minimalist, Native-feel (Material 3 base), Privacy-focused (darker hues for Safe-Box mode).
 - **Dark Mode**: Yes (Requires explicit mapping).

@@ -4,7 +4,7 @@
 - **Form Name**: Note Detail Edit Form
 - **Purpose**: Allows users to manually correct transcript errors, edit the title, or change the assigned project folder.
 - **Route / Page**: `/note/:id` (Triggered via "Edit" action).
-- **Framework**: Flutter (`Form`, `TextFormField`).
+- **Framework**: Flutter (`GetX` Controller + `Form`).
 - **Validation Approach**: On Blur and On Submit.
 
 ## 2. Field Inventory

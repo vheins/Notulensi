@@ -8,7 +8,7 @@
 1. App Launch -> Check `SecurityService.isSafeBoxEnabled`.
 2. If `true` -> Show `SafeBoxOverlay`.
 3. User Taps "Unlock" -> System Biometric Dialog.
-4. On Success -> `SecurityService` derives Isar Key -> Database Opens -> App Home.
+4. On Success -> `SecurityService` derives Isar Key -> Database Opens -> `AuthController` updates state -> App Home.
 
 ## 3. Business Rules
 - Safe-Box is disabled by default.

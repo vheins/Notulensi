@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   
-  # State Management
-  flutter_bloc: ^8.1.6
+  # State Management & Routing
+  get: ^4.6.6
   equatable: ^2.0.5
   
   # Persistence
@@ -23,10 +23,6 @@ dependencies:
   # Security
   flutter_secure_storage: ^9.0.0
   local_auth: ^2.1.8
-  
-  # DI & Routing
-  get_it: ^7.6.7
-  go_router: ^13.2.0
   
   # UI & Design System
   google_fonts: ^6.2.1

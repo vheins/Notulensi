@@ -4,14 +4,14 @@
 Notulensi utilizes a **Feature-based Clean Architecture** for modularity and high performance in an offline-first environment.
 
 ### 1.1 Layers
-- **Presentation**: Flutter/Cubit.
+- **Presentation**: Flutter/GetX.
 - **Domain**: Pure Dart Use Cases and Entities.
 - **Data**: Isar Repository and Infrastructure.
 - **External**: OS Native APIs (Camera, Biometrics, Bluetooth, Calendar).
 
 ## 2. Technology Stack
 - **Framework**: Flutter (v3.19+).
-- **State Management**: `flutter_bloc` / `cubit`.
+- **State Management**: `get` (GetX).
 - **Database**: Isar (Encrypted, Full-text Search).
 - **STT**: `speech_to_text` (Primary) / `vosk_flutter` (Pro).
 - **Audio**: `record`, `audioplayers`, and custom VAD filters.

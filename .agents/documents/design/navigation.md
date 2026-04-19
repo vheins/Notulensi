@@ -35,9 +35,9 @@ Root (Biometric Gate)
 ```
 
 ## 4. Component Recommendations
-- **Navigation Bar**: Flutter `BottomNavigationBar` (or `NavigationBar` for Material 3).
-- **Recording Modal**: A full-screen `showGeneralDialog` or a pushed route without a back button (to prevent accidental closing without explicit 'Stop' or 'Cancel').
-- **Detail Screens**: `CustomScrollView` with `SliverAppBar` to allow the title to collapse as the user scrolls through long transcripts.
+- **Navigation Bar**: Flutter `NavigationBar` (Material 3) integrated with `Get.toNamed`.
+- **Recording Modal**: A full-screen `Get.to` with `transition: Transition.downToUp`.
+- **Detail Screens**: `CustomScrollView` with `SliverAppBar`.
 - **Markers**: A horizontal scrolling timeline or discrete chips above the transcript in the Note Detail view.
 
 ## 5. Route Table
