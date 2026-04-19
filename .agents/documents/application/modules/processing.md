@@ -17,17 +17,17 @@ The `feature_processing` module implements the rule-based intelligence for extra
 - **Context Parsing**: Identifies sentence boundaries around matched keywords.
 - **Storage Update**: Updates the `MeetingNote` record with new links to `ActionItem` and `Deadline` collections.
 
-## 5. Test Architecture
+## 5. Test Architecture (4-Concern Rule)
 This module adheres to the mandatory 4-concern test strategy:
 - **Database Testing**: Ensure extraction updates correct references in `ActionItemCollection` and `DeadlineCollection`.
-- **Service Testing**: Test extraction logic functions via isolate entry points for varied inputs.
-- **State Management Testing**: Test logic for updating UI indicating processing completion.
-- **UI Testing**: Widget test displaying extracted action items and deadlines within note detail views.
+- **Service Testing**: Test extraction logic functions via isolate entry points for varied inputs (Regex Engine accuracy).
+- **State Management Testing**: Test logic for updating UI indicating processing completion (`Processing` vs `Ready`).
+- **UI Testing**: Widget test displaying extracted action items and deadlines within note detail views, including highlight toggling.
 
 ## 6. Test Scenarios
-| Type | Scenario | Expected Result |
+| Layer | Scenario | Expected Result |
 | :--- | :--- | :--- |
-| **Positive** | Transcript: "I will call the client tomorrow." | Extracted: AI="call the client", DL="tomorrow". |
-| **Negative** | Empty transcript input. | Engine returns empty lists gracefully. |
-| **Edge** | Transcript > 50,000 words. | Background isolate processes without UI jank. |
-| **Security** | Sanitization of special characters. | Regex handles symbols without crashing or exploitation. |
+| **1. Database** | IsarLinks creation for extracted items. | ActionItem and Deadline records are linked correctly to the parent Note. |
+| **2. Service** | Regex extraction accuracy (Regex Engine). | Correctly extracts "call client" from "I will call client tomorrow". |
+| **3. State** | Processing isolation (`Processing` vs `Ready`). | UI shows "Processing..." during isolate execution; toggles to "Ready" on completion. |
+| **4. UI** | Highlight toggling and highlighting. | Tapping an extracted item scrolls the transcript to the matched position. |

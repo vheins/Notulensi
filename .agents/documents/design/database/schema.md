@@ -3,17 +3,19 @@
 Notulensi uses **Isar Database** for high-performance, offline data persistence.
 
 ## 1. MeetingNoteCollection
-Stores the main meeting data.
+Stores the main meeting data using UUID primary keys.
 
 ```dart
 @collection
 class MeetingNoteCollection {
   late String id; // UUID String-based Primary Key
-
+  
   @Index(type: IndexType.value)
   late String title;
-
+  
   late DateTime createdAt;
+  late DateTime updatedAt;
+  DateTime? deletedAt; // Soft Delete support
 
   @Index(type: IndexType.value, caseSensitive: false)
   late String transcript; // Full-text search enabled
@@ -21,7 +23,7 @@ class MeetingNoteCollection {
   late String audioPath;
   late int storageSize;
 
-  // Backlinks to linked collections
+  // Links to associated collections
   final actionItems = IsarLinks<ActionItemCollection>();
   final deadlines = IsarLinks<DeadlineCollection>();
 }
@@ -34,10 +36,17 @@ Stores extracted action items.
 @collection
 class ActionItemCollection {
   late String id; // UUID String-based Primary Key
-
+  
   late String content;
-  late bool isCompleted;
+  late int startIndex;
+  late int endIndex;
+  bool isCompleted = false;
+  
+  late DateTime createdAt;
+  late DateTime updatedAt;
 
+  // Backlink to Note
+  @Backlink(to: 'actionItems')
   final note = IsarLink<MeetingNoteCollection>();
 }
 ```
@@ -49,10 +58,18 @@ Stores extracted deadlines.
 @collection
 class DeadlineCollection {
   late String id; // UUID String-based Primary Key
-
+  
+  late String content;
   late String dateText;
-  late String associatedText;
+  late DateTime deadlineDate;
+  late int startIndex;
+  late int endIndex;
+  
+  late DateTime createdAt;
+  late DateTime updatedAt;
 
+  // Backlink to Note
+  @Backlink(to: 'deadlines')
   final note = IsarLink<MeetingNoteCollection>();
 }
 ```

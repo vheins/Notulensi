@@ -29,16 +29,41 @@ Notulensi utilizes a **Feature-based Clean Architecture** to ensure high perform
 ```dart
 @collection
 class MeetingNoteCollection {
-  late String id; // UUID String-based Primary Key
+  late String id; // UUID format
   @Index(type: IndexType.value)
   late String title;
   late DateTime createdAt;
+  late DateTime updatedAt;
+  DateTime? deletedAt; // Soft delete support
   @Index(type: IndexType.value, caseSensitive: false)
   late String transcript; // Full-text search enabled
   late String audioPath;
   late int storageSize;
   final actionItems = IsarLinks<ActionItemCollection>();
   final deadlines = IsarLinks<DeadlineCollection>();
+}
+
+@collection
+class ActionItemCollection {
+  late String id; // UUID format
+  late String content;
+  late int startIndex;
+  late int endIndex;
+  bool isCompleted = false;
+  late DateTime createdAt;
+  late DateTime updatedAt;
+}
+
+@collection
+class DeadlineCollection {
+  late String id; // UUID format
+  late String content;
+  late String dateText;
+  late DateTime deadlineDate;
+  late int startIndex;
+  late int endIndex;
+  late DateTime createdAt;
+  late DateTime updatedAt;
 }
 ```
 
@@ -49,22 +74,25 @@ class MeetingNoteCollection {
   - `Deadline`: `\b(by|on)\s+(Monday|Tuesday|...|tomorrow)\b`
 - **Output**: Direct batch-save to Isar linked collections.
 
-## 4. Performance & Resource Optimization
+## 4. Test Architecture (4-Concern Rule)
+As per `.agents/rules/test-architecture.md`, all features must be verified across these layers:
+
+| Layer | Focus | Key Scenarios |
+| :--- | :--- | :--- |
+| **1. Database** | Integrity & Persistence | UUID generation, IsarLinks integrity, Full-text index performance. |
+| **2. Service** | Business Logic | Regex extraction accuracy, PDF generation formatting, Audio file compression. |
+| **3. State** | Workflow & Guardrails | Recording state transitions, Permission request logic, Storage limit enforcement. |
+| **4. UI** | Rendering & Validation | Waveform sync, Real-time scrolling transcript, Search result filtering. |
+
+## 5. Performance & Resource Optimization
 - **Audio Format**: Mono PCM or M4A (depending on OS support) to minimize storage footprint.
 - **Memory Management**: Transcript text chunks are buffered and persisted periodically to avoid large single-write operations.
 - **Battery**: STT engine is released immediately when recording stops.
 
-## 5. Security & Privacy Model
+## 6. Security & Privacy Model
 - **Offline Mandate**: Zero networking dependencies in the core logic.
 - **Storage Protection**: All audio files and database records are stored in the application's private directory (`get_application_documents_directory`).
 - **Data Exfiltration Prevention**: No analytics or error-reporting packages that transmit data (e.g., Firebase Analytics/Crashlytics).
-
-## 6. Test Architecture
-As part of the quality assurance strategy, Notulensi enforces a mandatory 4-concern test strategy:
-1. **Database Testing**: Verifies Isar schema interactions, CRUD operations, and transaction integrity.
-2. **Service Testing**: Mocks external dependencies (audio capture, OS STT) and validates pure business logic and mapping.
-3. **State Management Testing**: Tests `Cubit` / `Bloc` states in isolation to ensure predictable state transitions for complex UI interactions.
-4. **UI Testing**: Uses Flutter widget tests and integration tests to verify component rendering and end-to-end user flows.
 
 ## 7. Implementation Milestones
 
