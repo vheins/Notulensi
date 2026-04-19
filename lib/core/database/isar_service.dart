@@ -2,6 +2,7 @@ import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../shared/models/database/meeting_note.dart';
 import '../../shared/models/database/note_version.dart';
+import '../../shared/models/database/note_multimedia.dart';
 
 /// Service for managing the Isar database instance.
 /// Note: Isar 3.x stable does not support native full-database encryption.
@@ -15,7 +16,7 @@ class IsarService {
     final dir = await getApplicationDocumentsDirectory();
     
     _isar = await Isar.open(
-      [MeetingNoteSchema, FolderSchema, NoteVersionSchema],
+      [MeetingNoteSchema, FolderSchema, NoteVersionSchema, NoteMultimediaSchema],
       directory: dir.path,
       name: 'notulensi_vault',
       inspector: true,
