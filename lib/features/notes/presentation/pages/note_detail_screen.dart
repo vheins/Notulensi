@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/theme/notulensi_theme.dart';
 import '../../logic/note_detail_controller.dart';
 import '../widgets/audio_player_widget.dart';
+import '../widgets/redacted_text_view.dart';
 
 class NoteDetailScreen extends GetView<NoteDetailController> {
   const NoteDetailScreen({super.key});
@@ -47,12 +48,13 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
                 centerTitle: false,
               ),
               actions: [
-                IconButton(
-                  icon: const Icon(Icons.history_rounded),
-                  onPressed: () {
-                    // TODO: Show version history
-                  },
-                ),
+                Obx(() => IconButton(
+                  icon: Icon(
+                    controller.isRedacted.value ? Icons.visibility_off : Icons.visibility,
+                    color: controller.isRedacted.value ? colors.primary : colors.textLow,
+                  ),
+                  onPressed: controller.toggleRedaction,
+                )),
                 IconButton(
                   icon: const Icon(Icons.share_outlined),
                   onPressed: () {
@@ -128,7 +130,9 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
                         ],
                       ),
                     ),
+
                     const SizedBox(height: 16),
+
                     if (note.audioPath != null)
                       AudioPlayerWidget(audioPath: note.audioPath!),
                   ],
@@ -140,13 +144,14 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
             SliverPadding(
               padding: const EdgeInsets.all(16),
               sliver: SliverToBoxAdapter(
-                child: Text(
-                  note.transcript.isNotEmpty ? note.transcript : 'Transcript is empty.',
+                child: Obx(() => RedactedTextView(
+                  text: note.transcript.isNotEmpty ? note.transcript : 'Transcript is empty.',
+                  isRedacted: controller.isRedacted.value,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     height: 1.6,
                     color: colors.textHigh.withAlpha((0.9 * 255).round()),
                   ),
-                ),
+                )),
               ),
             ),
 

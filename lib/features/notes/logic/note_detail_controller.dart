@@ -10,6 +10,7 @@ class NoteDetailController extends GetxController {
 
   final note = Rxn<MeetingNote>();
   final isLoading = false.obs;
+  final isRedacted = false.obs;
 
   Future<void> fetchNote(Id id) async {
     isLoading.value = true;
@@ -27,6 +28,10 @@ class NoteDetailController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void toggleRedaction() {
+    isRedacted.toggle();
   }
 
   Future<void> updateTranscript(String newTranscript) async {
