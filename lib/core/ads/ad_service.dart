@@ -10,6 +10,7 @@ class AdService extends GetxService {
 
   RewardedAd? _rewardedAd;
   final isLoading = false.obs;
+  final isPro = false.obs;
 
   // Test Ad Unit IDs
   final String _rewardedAdUnitId = Platform.isAndroid
@@ -18,7 +19,12 @@ class AdService extends GetxService {
 
   Future<void> init() async {
     await MobileAds.instance.initialize();
+    await checkProStatus();
     _loadRewardedAd();
+  }
+
+  Future<void> checkProStatus() async {
+    isPro.value = await isProActive();
   }
 
   void _loadRewardedAd() {
@@ -50,6 +56,7 @@ class AdService extends GetxService {
     await _rewardedAd!.show(
       onUserEarnedReward: (ad, reward) async {
         await _grantProAccess();
+        await checkProStatus();
         onRewardGranted();
         _loadRewardedAd(); // Load next one
       },
