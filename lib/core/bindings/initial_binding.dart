@@ -33,6 +33,7 @@ import '../database/isar_service.dart';
 import '../hardware/volume_button_listener.dart';
 import '../hardware/pip_service.dart';
 import '../integration/calendar_bridge.dart';
+import '../network/p2p_sync_service.dart';
 import '../permissions/permission_service.dart';
 import '../security/secure_storage_service.dart';
 
@@ -65,6 +66,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<PdfTemplateEngine>(() => PdfTemplateEngine());
     Get.lazyPut<QrSyncService>(() => QrSyncService());
     Get.lazyPut<CalendarBridge>(() => CalendarBridge());
+    Get.lazyPut<P2PSyncService>(() => P2PSyncService());
     Get.lazyPut<BackupService>(() => BackupService());
     Get.lazyPut<PipService>(() => PipService());
     Get.lazyPut<SilenceTrimmer>(() => SilenceTrimmer());
