@@ -1,7 +1,9 @@
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:get/get.dart';
 
 class SttStatusService {
   final SpeechToText _stt = SpeechToText();
+  final isModelDownloaded = true.obs; // Mock for baseline status
   
   /// Checks if offline STT is available for the given locale.
   /// Note: This is an estimation based on the 'hasSpeech' initialization 
