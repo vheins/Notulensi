@@ -4,6 +4,7 @@ import '../../features/intelligence/services/extraction_service.dart';
 import '../../features/intelligence/services/stt_status_service.dart';
 import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
+import '../../features/notes/logic/folder_detail_controller.dart';
 import '../../features/notes/services/note_management_service.dart';
 import '../../features/notes/services/search_service.dart';
 import '../../features/notes/services/folder_service.dart';
@@ -56,6 +57,12 @@ class InitialBinding extends Bindings {
     );
     Get.lazyPut<NoteDetailController>(
       () => NoteDetailController(isarService: Get.find<IsarService>()),
+    );
+    Get.lazyPut<FolderDetailController>(
+      () => FolderDetailController(
+        isarService: Get.find<IsarService>(),
+        folderService: Get.find<FolderService>(),
+      ),
     );
     Get.lazyPut<AudioPlaybackController>(
       () => AudioPlaybackController(service: Get.find<AudioPlayerService>()),
