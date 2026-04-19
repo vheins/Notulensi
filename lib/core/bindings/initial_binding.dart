@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../../features/notes/logic/note_list_controller.dart';
+import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
 import '../database/isar_service.dart';
@@ -21,6 +22,9 @@ class InitialBinding extends Bindings {
     );
     Get.lazyPut<NoteListController>(
       () => NoteListController(isarService: Get.find<IsarService>()),
+    );
+    Get.lazyPut<NoteDetailController>(
+      () => NoteDetailController(isarService: Get.find<IsarService>()),
     );
   }
 }

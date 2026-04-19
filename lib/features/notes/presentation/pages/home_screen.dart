@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../core/navigation/app_routes.dart';
 import '../../../../core/theme/notulensi_theme.dart';
 import '../../logic/note_list_controller.dart';
 import '../widgets/note_card.dart';
@@ -85,7 +86,7 @@ class HomeScreen extends GetView<NoteListController> {
                     return NoteCard(
                       note: note,
                       onTap: () {
-                        // TODO: Navigate to Detail
+                        Get.toNamed(AppRoutes.noteDetail.replaceFirst(':id', note.id.toString()));
                       },
                     );
                   },
