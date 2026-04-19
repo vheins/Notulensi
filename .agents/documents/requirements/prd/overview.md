@@ -7,7 +7,7 @@
 - **Privacy First**: 0% data transmission of meeting content to external servers.
 - **Offline Reliability**: Works in airplane mode or remote areas.
 - **Automated Structure**: Reduces manual note-taking through rule-based highlight extraction.
-- **Physical Security**: Local encryption and biometric protection for stored data.
+- **Advanced Productivity**: High-value organizational tools that remain fully local.
 
 ## 2. Target Audience
 - **Corporate Professionals**: Handling sensitive board/client meetings.
@@ -17,24 +17,27 @@
 ## 3. Product Features
 
 ### 3.1 Recording & Transcription
-- **Hybrid Offline STT**: OS-native STT for minimal APK impact with local model support.
-- **Real-time Feedback**: Live transcript scrolling and audio waveform visualization.
-- **Waveform Markers**: Ability to drop bookmarks/stars on the waveform during recording.
+- **Hybrid Offline STT**: OS-native STT with local model support.
+- **Noise Suppression**: Local ML-based audio cleaning.
+- **Waveform Markers**: Bookmarks/stars dropped during live capture.
+- **Voice Commands**: Hands-free control (e.g., "Stop Recording") via local recognition.
 
 ### 3.2 Automated Intelligence (Local Only)
-- **Rule-Based Extraction**: Action item and deadline detection via deterministic regex.
-- **Smart Speaker Tagging**: Local speaker separation based on Voice Activity Detection (VAD).
-- **Privacy Masking**: Local regex-based redaction of PII (names, numbers) before export.
-- **Context Linking**: Automatic linking between related notes based on keyword overlap.
+- **Rule-Based Extraction**: Action item and deadline detection via regex.
+- **Smart Speaker Tagging**: Local speaker separation via VAD.
+- **Privacy Masking**: Local redaction of PII before export.
+- **Context Linking**: Inter-note semantic indexing and cross-linking.
 
 ### 3.3 Note Management & Security
-- **Physical Safe-Box**: Database encryption (Isar) unlocked via Biometrics (Fingerprint/FaceID).
-- **Full-Text Search**: Local indexing of transcripts for instant retrieval.
-- **Calendar Integration**: One-tap addition of detected deadlines to the local OS calendar.
+- **Physical Safe-Box**: Database encryption (Isar) with Biometric Lock.
+- **Organization**: Project/Client folders and note versioning history.
+- **Calendar Integration**: Local deadline sync.
+- **Insight Dashboard**: Local statistics on meeting habits and productivity.
 
-### 3.4 Export & Sharing
-- **Offline Template Engine**: Customizable PDF layouts (Formal, Creative, Minimalist).
-- **System Share Sheet**: Integration with native sharing workflows.
+### 3.4 Sharing & Ecosystem
+- **QR-Code Sync**: Local, zero-network sharing of transcripts via QR generation.
+- **Offline Backups**: Encrypted exports to SD-Card or custom local folders.
+- **Template Engine**: Customizable PDF formats (Formal, Minimalist, etc.).
 
 ## 4. User Stories & Acceptance Criteria
 *See expanded lists in `.agents/documents/requirements/user-stories.md`.*
@@ -47,10 +50,11 @@
 ## 6. Success Metrics
 - **Transcription Latency**: < 500ms from speech to UI text update.
 - **Security Adoption**: > 50% of users enable Biometric Safe-Box.
-- **Offline Integrity**: 100% success rate for processing in zero-signal environments.
+- **Offline Reliability**: 100% core feature availability in zero-signal environments.
 
 ## 7. Roadmap Expansion
 - **V1.0 (Core)**: Recording, STT, Regex Extraction, Isar, Basic PDF.
 - **V1.1 (Security)**: Biometric Safe-Box, Waveform Markers.
 - **V1.2 (Intelligence)**: Speaker Tagging, Privacy Masking, Calendar Integration.
-- **V1.3 (Ecosystem)**: Context Linking, Advanced Template Engine.
+- **V1.3 (Productivity)**: Folders, Versioning, Noise Suppression.
+- **V1.4 (Ecosystem)**: QR Sync, SD Backups, Voice Commands.

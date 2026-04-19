@@ -21,36 +21,37 @@ For privacy-conscious professionals who need structured meeting notes without cl
 - **Instant Structure:** Rule-based parsing provides instant extraction of deadlines and action items deterministically, avoiding "AI processing" delays and hallucinations.
 - **Lightweight Speed:** Optimized local storage (Isar/Hive) provides instant search capabilities and fast startup.
 
-## 5. Scope (MVP & Beyond)
+## 5. Scope (Phased Evolution)
 The project is strictly limited to deterministic, local storage to ensure 100% privacy and zero-server dependency for data processing.
 
-**In Scope (Phase 1 & 2):**
+**Phase 1 & 2 (Core Utility):**
 - Offline Audio Recording & Transcription
 - Local Note Storage (Isar/Hive)
-- Rule-based Processing (Regex extraction for deadlines and action items)
+- Rule-based Processing (Regex extraction)
 - Note CRUD & Search Operations
-- Export to TXT/PDF (Standard Templates)
+- Export to TXT/PDF
 
-**Advanced Features (Phase 3 & 4):**
-- **Physical Safe-Box**: Local database encryption with Biometric Lock.
-- **Smart Speaker Tagging**: Local Voice Activity Detection (VAD) for speaker separation.
-- **Privacy Masking**: Automatic regex-based local redaction of sensitive info.
-- **Local Context Linking**: Inter-note semantic search and cross-linking.
-- **Audio-to-Calendar**: Local system calendar integration for detected deadlines.
-- **Visual Waveform Markers**: User-defined bookmarks during live recording.
-- **Offline Template Engine**: Customizable professional export formats.
+**Phase 3 & 4 (Security & Intelligence):**
+- **Physical Safe-Box**: Database encryption with Biometric Lock.
+- **Smart Speaker Tagging**: Local VAD-based speaker separation.
+- **Privacy Masking**: Regex-based local redaction of PII.
+- **Local Context Linking**: Inter-note semantic indexing.
+- **Audio-to-Calendar**: Local system calendar bridge.
+- **Visual Waveform Markers**: In-recording bookmarks.
 
-**Out of Scope (Won't/Deferred):**
-- Cloud Sync (Directly violates the core "100% Offline" objective)
-- Large-scale Diarization (Deferred until lightweight local models are viable)
+**Phase 5 (Productivity & Ecosystem):**
+- **Audio Intelligence**: Offline Noise Suppression & Local Voice Commands.
+- **Advanced Management**: Project/Client Folders & Note Versioning.
+- **Offline Ecosystem**: QR-Code Note Sharing (Zero-Network) & SD-Card Backups.
+- **Accessibility**: Picture-in-Picture (PiP) transcripts & Focus UI.
 
 ## 6. Assumptions
-- **User Assumptions:** Users are willing to trade "perfect" probabilistic AI summaries for "good enough" local, deterministic, and private rule-based extraction. Privacy is a stronger driver than cloud collaboration.
-- **Technical Assumptions:** Modern mobile hardware can handle real-time STT and local database encryption without excessive battery drain.
+- **User Assumptions:** Users are willing to trade "perfect" probabilistic AI summaries for "good enough" local, deterministic, and private rule-based extraction. 
+- **Technical Assumptions:** Modern mobile hardware can handle real-time STT, local database encryption, and noise suppression without excessive battery drain.
 - **Business Assumptions:** The privacy-first market segment is large enough to sustain the app via AdMob rewards and a one-time "Pro" purchase for advanced local features.
 
 ## 7. Feasibility
 **Verdict: GO**
-- **Technical (8/10):** Highly feasible using Flutter with local engines. Biometric and Calendar APIs are well-supported locally.
+- **Technical (8/10):** Highly feasible using Flutter with local engines. 
 - **Financial:** Viable with $0 backend infrastructure costs.
-- **Timeline:** Core MVP in 4-6 weeks; Advanced features rolled out in subsequent 2-week sprints.
+- **Timeline:** Core MVP in 4-6 weeks; Advanced features rolled out in continuous 2-week cycles.

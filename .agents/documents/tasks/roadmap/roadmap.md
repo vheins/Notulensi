@@ -44,4 +44,18 @@ This roadmap maps the project backlog and requirements into development phases, 
 *   **Milestone 4.2: Ecosystem & Personalization**
     *   **Local Context Linking**: Inter-note relationship mapping and keyword bridging.
     *   **Offline Template Engine**: Multi-format customizable PDF exports.
-    *   Performance tuning for large encrypted databases.
+
+## Phase 5: Productivity & Ecosystem
+**Goal:** Expand utility with advanced ML and offline connectivity.
+
+*   **Milestone 5.1: Audio Intelligence & Control**
+    *   **Noise Suppression**: Local ML filter to clean audio in noisy environments.
+    *   **Local Voice Commands**: Hands-free app control (Start/Stop/Mark).
+*   **Milestone 5.2: Professional Management**
+    *   **Project/Client Folders**: Advanced note organization.
+    *   **Note Versioning**: Local history of transcript edits.
+    *   **Insight Dashboard**: Weekly productivity statistics.
+*   **Milestone 5.3: Zero-Network Connectivity**
+    *   **QR-Code Sync**: Sharing notes between devices via QR scanner.
+    *   **Automatic SD-Card Backup**: Skema cadangan lokal ke memori eksternal.
+    *   **PiP Transcripts**: Multitasking support during recording.
