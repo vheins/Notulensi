@@ -57,10 +57,18 @@ class NoteCard extends GetView<SelectionController> {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 8),
+                    if (note.transcript.isNotEmpty)
+                      Text(
+                        note.transcript,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: colors.textLow.withAlpha(200), fontSize: 13),
+                      ),
+                    const SizedBox(height: 8),
                     Text(
-                      DateFormat('MMM dd, yyyy').format(note.createdAt),
-                      style: TextStyle(color: colors.textLow, fontSize: 12),
+                      DateFormat('MMM dd, hh:mm a').format(note.createdAt),
+                      style: TextStyle(color: colors.textLow, fontSize: 11),
                     ),
                   ],
                 ),

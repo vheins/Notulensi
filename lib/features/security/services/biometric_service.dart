@@ -11,16 +11,23 @@ class BiometricService {
   Future<bool> isBiometricAvailable() async {
     final bool canAuthenticateWithBiometrics = await _auth.canCheckBiometrics;
     final bool canAuthenticate = canAuthenticateWithBiometrics || await _auth.isDeviceSupported();
+    print('DEBUG: Biometric availability: $canAuthenticate (canCheck: $canAuthenticateWithBiometrics)');
     return canAuthenticate;
   }
 
   /// Triggers the system biometric prompt.
   Future<bool> authenticate({String reason = 'Please authenticate to access your notes'}) async {
+    print('DEBUG: Starting authentication prompt...');
     try {
-      return await _auth.authenticate(
+      final result = await _auth.authenticate(
         localizedReason: reason,
+        persistAcrossBackgrounding: true,
+        biometricOnly: true,
       );
+      print('DEBUG: Authentication result: $result');
+      return result;
     } catch (e) {
+      print('DEBUG: Authentication error: $e');
       return false;
     }
   }

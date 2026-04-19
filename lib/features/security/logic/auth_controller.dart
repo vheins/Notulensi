@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
+import '../../../core/security/secure_storage_service.dart';
 import '../services/biometric_service.dart';
 
 abstract class AuthState extends Equatable {
   const AuthState();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -31,9 +32,13 @@ class AuthBiometricUnavailable extends AuthState {
 
 class AuthController extends GetxController {
   final BiometricService _biometricService;
+  final SecureStorageService _secureStorageService;
 
-  AuthController({required BiometricService biometricService})
-      : _biometricService = biometricService;
+  AuthController({
+    required BiometricService biometricService,
+    required SecureStorageService secureStorageService,
+  })  : _biometricService = biometricService,
+        _secureStorageService = secureStorageService;
 
   final _state = Rx<AuthState>(const AuthInitial());
   AuthState get state => _state.value;
@@ -43,19 +48,43 @@ class AuthController extends GetxController {
     _state.value = const AuthChecking();
     final isAvailable = await _biometricService.isBiometricAvailable();
     if (isAvailable) {
-      _state.value = const Unauthenticated();
+      final isSafeBoxEnabled = await _secureStorageService.isSafeBoxEnabled();
+      if (isSafeBoxEnabled) {
+        await autoAuthenticate();
+      } else {
+        _state.value = const Unauthenticated();
+      }
     } else {
       _state.value = const AuthBiometricUnavailable();
     }
   }
 
-  Future<void> authenticate() async {
+  Future<void> autoAuthenticate() async {
     _state.value = const AuthChecking();
     final success = await _biometricService.authenticate();
     if (success) {
       _state.value = const Authenticated();
     } else {
       _state.value = const Unauthenticated(error: 'Authentication failed or canceled');
+    }
+  }
+
+  Future<void> authenticate() async {
+    print('DEBUG: AuthController.authenticate() called');
+    _state.value = const AuthChecking();
+    final success = await _biometricService.authenticate();
+    print('DEBUG: AuthController authentication success: $success');
+    if (success) {
+      _state.value = const Authenticated();
+    } else {
+      _state.value = const Unauthenticated(error: 'Authentication failed or canceled');
+    }
+  }
+
+  Future<void> toggleSafeBox(bool enabled) async {
+    await _secureStorageService.setSafeBoxEnabled(enabled);
+    if (enabled) {
+      lock();
     }
   }
 

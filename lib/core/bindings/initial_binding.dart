@@ -4,6 +4,7 @@ import '../../features/export/services/pdf_template_engine.dart';
 import '../../features/export/services/qr_sync_service.dart';
 import '../../features/intelligence/services/extraction_service.dart';
 import '../../features/intelligence/services/stt_status_service.dart';
+import '../../features/intelligence/services/stt_service.dart';
 import '../../features/intelligence/services/speaker_tagging_service.dart';
 import '../../features/intelligence/services/noise_suppression_service.dart';
 import '../../features/intelligence/services/analytics_service.dart';
@@ -20,6 +21,7 @@ import '../../features/notes/services/versioning_service.dart';
 import '../../features/recording/logic/audio_playback_controller.dart';
 import '../../features/recording/logic/recording_controller.dart';
 import '../../features/recording/services/audio_player_service.dart';
+import '../../features/recording/services/audio_recording_service.dart';
 import '../../features/recording/services/session_recovery_service.dart';
 import '../../features/recording/services/multimedia_service.dart';
 import '../../features/security/logic/auth_controller.dart';
@@ -42,11 +44,18 @@ import '../security/secure_storage_service.dart';
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
-    // Core Services
-    Get.lazyPut<SecureStorageService>(() => SecureStorageService());
-    Get.lazyPut<PermissionService>(() => PermissionService());
-    Get.lazyPut<BiometricService>(() => BiometricService());
-    Get.lazyPut<IsarService>(() => IsarService(), fenix: true);
+    // Core Services - Promoted to Get.put to avoid 'not found' errors after Hot Reload
+    // Note: SecureStorageService is already initialized in main.dart before this binding
+    Get.put<PermissionService>(PermissionService(), permanent: true);
+    Get.put<BiometricService>(BiometricService(), permanent: true);
+    Get.put<NoteManagementService>(
+      NoteManagementService(isarService: Get.find<IsarService>()),
+      permanent: true,
+    );
+    Get.put<SttService>(SttService(), permanent: true);
+    Get.put<AudioRecordingService>(AudioRecordingService(), permanent: true);
+
+    // Other Services (Lazy)
     Get.lazyPut<AudioPlayerService>(() => AudioPlayerService());
     Get.lazyPut<ExtractionService>(() => ExtractionService());
     Get.lazyPut<SttStatusService>(() => SttStatusService());
@@ -78,22 +87,19 @@ class InitialBinding extends Bindings {
     Get.lazyPut<StorageMonitorService>(() => StorageMonitorService());
     Get.lazyPut<VolumeButtonListener>(() => VolumeButtonListener());
     Get.lazyPut<AdService>(() => AdService(secureStorage: Get.find<SecureStorageService>()));
-    Get.lazyPut<NoteManagementService>(
-      () => NoteManagementService(isarService: Get.find<IsarService>()),
-    );
 
     // Controllers
     Get.lazyPut<AuthController>(
-      () => AuthController(biometricService: Get.find<BiometricService>()),
+      () => AuthController(
+        biometricService: Get.find<BiometricService>(),
+        secureStorageService: Get.find<SecureStorageService>(),
+      ),
     );
     Get.lazyPut<NoteListController>(
       () => NoteListController(
         isarService: Get.find<IsarService>(),
         searchService: Get.find<SearchService>(),
       ),
-    );
-    Get.lazyPut<NoteDetailController>(
-      () => NoteDetailController(isarService: Get.find<IsarService>()),
     );
     Get.lazyPut<FolderDetailController>(
       () => FolderDetailController(
@@ -108,6 +114,5 @@ class InitialBinding extends Bindings {
     Get.lazyPut<AudioPlaybackController>(
       () => AudioPlaybackController(service: Get.find<AudioPlayerService>()),
     );
-    Get.lazyPut<RecordingController>(() => RecordingController());
   }
 }

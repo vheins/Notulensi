@@ -10,6 +10,13 @@ class RecordingScreen extends GetView<RecordingController> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<NotulensiColors>()!;
+    
+    // Auto-start recording on build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!controller.isRecording.value) {
+        controller.startRecording();
+      }
+    });
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -69,8 +76,10 @@ class RecordingScreen extends GetView<RecordingController> {
             const Spacer(),
 
             // Waveform
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 40),
+            Container(
+              height: 120,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Obx(() => WaveformVisualizer(
                 amplitudes: controller.amplitudes.toList(),
                 color: colors.primary,
@@ -93,8 +102,8 @@ class RecordingScreen extends GetView<RecordingController> {
                   // Stop Button
                   GestureDetector(
                     onTap: () {
-                      controller.stopRecording();
-                      Get.back();
+                      print('DEBUG: Stop button pressed');
+                      controller.stopAndSave();
                     },
                     child: Container(
                       width: 80,

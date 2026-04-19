@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/theme/notulensi_theme.dart';
 import '../../logic/note_detail_controller.dart';
+import '../../../export/services/text_export_service.dart';
+import '../../../export/services/pdf_template_engine.dart';
 import '../widgets/audio_player_widget.dart';
 import '../widgets/redacted_text_view.dart';
 
@@ -12,11 +14,6 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<NotulensiColors>()!;
-    final noteId = Get.parameters['id'];
-
-    if (noteId != null) {
-      controller.fetchNote(int.parse(noteId));
-    }
 
     return Scaffold(
       body: Obx(() {
@@ -55,11 +52,31 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
                   ),
                   onPressed: controller.toggleRedaction,
                 )),
-                IconButton(
+                PopupMenuButton<String>(
                   icon: const Icon(Icons.share_outlined),
-                  onPressed: () {
-                    // TODO: Export PDF
-                  },
+                  onSelected: (value) => _handleExport(value, context),
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(
+                      value: 'txt',
+                      child: Row(
+                        children: [
+                          Icon(Icons.text_snippet_outlined, size: 20),
+                          SizedBox(width: 12),
+                          Text('Export as Text'),
+                        ],
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      value: 'pdf',
+                      child: Row(
+                        children: [
+                          Icon(Icons.picture_as_pdf_outlined, size: 20),
+                          SizedBox(width: 12),
+                          Text('Export as PDF'),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -166,7 +183,7 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
 
   Widget _buildBottomActionBar(BuildContext context) {
     final colors = Theme.of(context).extension<NotulensiColors>()!;
-    
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
@@ -210,5 +227,22 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
         ),
       ),
     );
+  }
+
+  void _handleExport(String type, BuildContext context) async {
+    final note = controller.note.value;
+    if (note == null) return;
+
+    try {
+      if (type == 'txt') {
+        final textExport = TextExportService();
+        await textExport.exportNoteAsTxt(note);
+      } else if (type == 'pdf') {
+        final pdfExport = PdfTemplateEngine();
+        await pdfExport.exportNote(note);
+      }
+    } catch (e) {
+      Get.snackbar('Export Failed', 'Could not export note: $e');
+    }
   }
 }

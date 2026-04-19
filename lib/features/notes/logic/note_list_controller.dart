@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:get/get.dart';
 import 'package:isar/isar.dart';
 import '../../../../core/database/isar_service.dart';
@@ -17,25 +18,40 @@ class NoteListController extends GetxController {
   final notes = <MeetingNote>[].obs;
   final isLoading = false.obs;
   final searchQuery = ''.obs;
+  StreamSubscription<List<MeetingNote>>? _notesSubscription;
 
   @override
   void onInit() {
     super.onInit();
-    // Re-bind stream whenever search query changes
     ever(searchQuery, (_) => fetchNotes());
     fetchNotes();
   }
 
+  @override
+  void onClose() {
+    _notesSubscription?.cancel();
+    super.onClose();
+  }
+
   Future<void> fetchNotes() async {
     isLoading.value = true;
-    try {
-      final notesStream = _searchService.searchNotes(searchQuery.value);
-      notes.bindStream(notesStream);
-    } catch (e) {
-      // Handle error
-    } finally {
-      isLoading.value = false;
-    }
+
+    await _notesSubscription?.cancel();
+
+    final notesStream = _searchService.searchNotes(searchQuery.value);
+    _notesSubscription = notesStream.listen(
+      (noteList) {
+        notes.assignAll(noteList);
+        isLoading.value = false;
+      },
+      onError: (e) {
+        isLoading.value = false;
+      },
+    );
+  }
+
+  Future<void> refreshNotes() async {
+    await fetchNotes();
   }
 
   void updateSearch(String query) {

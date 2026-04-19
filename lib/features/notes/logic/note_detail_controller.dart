@@ -12,6 +12,24 @@ class NoteDetailController extends GetxController {
   final isLoading = false.obs;
   final isRedacted = false.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    _loadNoteFromArguments();
+  }
+
+  void _loadNoteFromArguments() {
+    final args = Get.arguments as Map<String, dynamic>?;
+    if (args != null && args['noteId'] != null) {
+      fetchNote(args['noteId'] as int);
+    } else {
+      final noteId = Get.parameters['id'];
+      if (noteId != null) {
+        fetchNote(int.parse(noteId));
+      }
+    }
+  }
+
   Future<void> fetchNote(Id id) async {
     isLoading.value = true;
     try {
@@ -34,14 +52,34 @@ class NoteDetailController extends GetxController {
     isRedacted.toggle();
   }
 
+  Future<void> updateTitle(String newTitle) async {
+    if (note.value == null) return;
+
+    final updatedNote = note.value!..title = newTitle;
+    await _isarService.instance.writeTxn(() async {
+      await _isarService.instance.meetingNotes.put(updatedNote);
+    });
+    note.value = updatedNote;
+    note.refresh();
+  }
+
   Future<void> updateTranscript(String newTranscript) async {
     if (note.value == null) return;
-    
+
     final updatedNote = note.value!..transcript = newTranscript;
     await _isarService.instance.writeTxn(() async {
       await _isarService.instance.meetingNotes.put(updatedNote);
     });
     note.value = updatedNote;
     note.refresh();
+  }
+
+  Future<void> saveNote() async {
+    if (note.value == null) return;
+
+    await _isarService.instance.writeTxn(() async {
+      await _isarService.instance.meetingNotes.put(note.value!);
+    });
+    Get.snackbar('Saved', 'Note updated successfully');
   }
 }

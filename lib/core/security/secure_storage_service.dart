@@ -20,6 +20,18 @@ class SecureStorageService {
             );
 
   static const _databaseSeedKey = 'isar_database_seed';
+  static const _safeBoxEnabledKey = 'safe_box_enabled';
+
+  /// Check if SafeBox (biometric lock) is enabled.
+  Future<bool> isSafeBoxEnabled() async {
+    final value = await _storage.read(key: _safeBoxEnabledKey);
+    return value == 'true';
+  }
+
+  /// Enable or disable SafeBox (biometric lock).
+  Future<void> setSafeBoxEnabled(bool enabled) async {
+    await _storage.write(key: _safeBoxEnabledKey, value: enabled.toString());
+  }
 
   /// Retrieves the existing database seed or generates a new 32-byte random seed.
   /// The seed is stored in the device's secure enclave / keystore.

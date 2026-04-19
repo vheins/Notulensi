@@ -20,31 +20,40 @@ class NoteManagementService {
     final note = await _isarService.instance.meetingNotes.get(id);
     if (note == null) return;
 
-    // TODO: When recording path is implemented in MeetingNote model:
-    // await _deleteAssociatedFiles(note);
-
     await _isarService.instance.writeTxn(() async {
       await _isarService.instance.meetingNotes.delete(id);
     });
   }
 
-  /// Helper to delete local audio/image files.
-  // ignore: unused_element
-  Future<void> _deleteAssociatedFiles(MeetingNote note) async {
-    // This will be fleshed out as the recording/camera features add file paths to the model.
-    // Example: File(note.audioPath).delete();
-  }
-
-  /// Creates a new note (Initial test helper).
-  Future<void> createNote(String title, String transcript) async {
+  /// Creates a new note with audio path support.
+  /// Returns the ID of the created note.
+  Future<int> createNoteWithAudio({
+    required String title,
+    required String transcript,
+    required int duration,
+    String? audioPath,
+  }) async {
     final note = MeetingNote()
       ..title = title
       ..transcript = transcript
+      ..durationSeconds = duration
+      ..audioPath = audioPath
       ..createdAt = DateTime.now()
       ..tags = [];
-    
+
+    int noteId = 0;
     await _isarService.instance.writeTxn(() async {
-      await _isarService.instance.meetingNotes.put(note);
+      noteId = await _isarService.instance.meetingNotes.put(note);
     });
+    return noteId;
+  }
+
+  /// Deprecated: use createNoteWithAudio
+  Future<void> createNote(String title, String transcript, {int duration = 0}) async {
+    await createNoteWithAudio(
+      title: title,
+      transcript: transcript,
+      duration: duration,
+    );
   }
 }
