@@ -7,21 +7,21 @@ class MeetingNote {
   Id id = Isar.autoIncrement;
 
   @Index(type: IndexType.value)
-  late String title;
+  String title = '';
 
-  late String transcript;
+  String transcript = '';
 
-  late String? audioPath;
+  String? audioPath;
 
-  late int durationSeconds;
+  int durationSeconds = 0;
 
   @Index()
-  late DateTime createdAt;
+  DateTime createdAt = DateTime.now();
 
-  late String? folderId;
+  String? folderId;
 
   @Index(type: IndexType.value)
-  late List<String> tags;
+  List<String> tags = [];
 }
 
 @collection
@@ -29,7 +29,7 @@ class Folder {
   Id id = Isar.autoIncrement;
 
   @Index(unique: true)
-  late String name;
+  String name = '';
 
-  late String? description;
+  String? description;
 }

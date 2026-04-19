@@ -7,10 +7,10 @@ class NoteVersion {
   Id id = Isar.autoIncrement;
 
   @Index()
-  late int noteId;
+  int noteId = 0;
 
-  late String transcript;
+  String transcript = '';
 
   @Index()
-  late DateTime createdAt;
+  DateTime createdAt = DateTime.now();
 }

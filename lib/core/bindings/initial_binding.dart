@@ -54,9 +54,9 @@ class InitialBinding extends Bindings {
     );
     Get.put<SttService>(SttService(), permanent: true);
     Get.put<AudioRecordingService>(AudioRecordingService(), permanent: true);
+    Get.put<AudioPlayerService>(AudioPlayerService(), permanent: true);
 
     // Other Services (Lazy)
-    Get.lazyPut<AudioPlayerService>(() => AudioPlayerService());
     Get.lazyPut<ExtractionService>(() => ExtractionService());
     Get.lazyPut<SttStatusService>(() => SttStatusService());
     Get.lazyPut<SpeakerTaggingService>(() => SpeakerTaggingService());

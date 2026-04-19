@@ -7,14 +7,14 @@ class NoteMultimedia {
   Id id = Isar.autoIncrement;
 
   @Index()
-  late int noteId;
+  int noteId = 0;
 
-  late String filePath;
+  String filePath = '';
 
-  late int timestampMs;
+  int timestampMs = 0;
 
-  late String type; // 'PHOTO'
+  String type = 'PHOTO';
 
   @Index()
-  late DateTime createdAt;
+  DateTime createdAt = DateTime.now();
 }
