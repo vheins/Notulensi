@@ -37,6 +37,7 @@ class AuthController extends GetxController {
 
   final _state = Rx<AuthState>(const AuthInitial());
   AuthState get state => _state.value;
+  Rx<AuthState> get rxState => _state;
 
   Future<void> checkBiometricAvailability() async {
     _state.value = const AuthChecking();
