@@ -5,6 +5,7 @@ import '../../features/export/services/qr_sync_service.dart';
 import '../../features/intelligence/services/extraction_service.dart';
 import '../../features/intelligence/services/stt_status_service.dart';
 import '../../features/intelligence/services/speaker_tagging_service.dart';
+import '../../features/intelligence/services/noise_suppression_service.dart';
 import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/logic/folder_detail_controller.dart';
@@ -43,6 +44,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<ExtractionService>(() => ExtractionService());
     Get.lazyPut<SttStatusService>(() => SttStatusService());
     Get.lazyPut<SpeakerTaggingService>(() => SpeakerTaggingService());
+    Get.lazyPut<NoiseSuppressionService>(() => NoiseSuppressionService());
     Get.lazyPut<SearchService>(() => SearchService(isarService: Get.find<IsarService>()));
     Get.lazyPut<FolderService>(() => FolderService(isarService: Get.find<IsarService>()));
     Get.lazyPut<VersioningService>(() => VersioningService(isarService: Get.find<IsarService>()));
