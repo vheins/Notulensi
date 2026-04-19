@@ -11,6 +11,7 @@ import '../../features/recording/logic/recording_controller.dart';
 import '../../features/recording/services/audio_player_service.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
+import '../ads/ad_service.dart';
 import '../database/isar_service.dart';
 import '../permissions/permission_service.dart';
 import '../security/secure_storage_service.dart';
@@ -28,6 +29,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut<SearchService>(() => SearchService(isarService: Get.find<IsarService>()));
     Get.lazyPut<FolderService>(() => FolderService(isarService: Get.find<IsarService>()));
     Get.lazyPut<TextExportService>(() => TextExportService());
+    Get.lazyPut<AdService>(() => AdService(secureStorage: Get.find<SecureStorageService>()));
     Get.lazyPut<NoteManagementService>(
       () => NoteManagementService(isarService: Get.find<IsarService>()),
     );

@@ -52,6 +52,16 @@ class SecureStorageService {
     return seed;
   }
 
+  /// Saves a string value to secure storage.
+  Future<void> save(String key, String value) async {
+    await _storage.write(key: key, value: value);
+  }
+
+  /// Reads a string value from secure storage.
+  Future<String?> read(String key) async {
+    return await _storage.read(key: key);
+  }
+
   /// Clears all stored data. Use with caution as this makes encrypted data unrecoverable.
   Future<void> deleteAll() async {
     await _storage.deleteAll();
