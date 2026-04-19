@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/theme/notulensi_theme.dart';
 import '../../logic/note_detail_controller.dart';
+import '../widgets/audio_player_widget.dart';
 
 class NoteDetailScreen extends GetView<NoteDetailController> {
   const NoteDetailScreen({super.key});
@@ -127,6 +128,9 @@ class NoteDetailScreen extends GetView<NoteDetailController> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    if (note.audioPath != null)
+                      AudioPlayerWidget(audioPath: note.audioPath!),
                   ],
                 ),
               ),

@@ -11,6 +11,10 @@ class MeetingNote {
 
   late String transcript;
 
+  late String? audioPath;
+
+  late int durationSeconds;
+
   @Index()
   late DateTime createdAt;
 

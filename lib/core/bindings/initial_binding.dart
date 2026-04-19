@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import '../../features/notes/logic/note_list_controller.dart';
 import '../../features/notes/logic/note_detail_controller.dart';
 import '../../features/notes/services/note_management_service.dart';
+import '../../features/recording/logic/audio_playback_controller.dart';
+import '../../features/recording/services/audio_player_service.dart';
 import '../../features/security/logic/auth_controller.dart';
 import '../../features/security/services/biometric_service.dart';
 import '../database/isar_service.dart';
@@ -15,7 +17,8 @@ class InitialBinding extends Bindings {
     Get.lazyPut<SecureStorageService>(() => SecureStorageService());
     Get.lazyPut<PermissionService>(() => PermissionService());
     Get.lazyPut<BiometricService>(() => BiometricService());
-    Get.lazyPut<IsarService>(() => IsarService());
+    Get.lazyPut<IsarService>(() => IsarService(), fenix: true);
+    Get.lazyPut<AudioPlayerService>(() => AudioPlayerService());
     Get.lazyPut<NoteManagementService>(
       () => NoteManagementService(isarService: Get.find<IsarService>()),
     );
@@ -29,6 +32,9 @@ class InitialBinding extends Bindings {
     );
     Get.lazyPut<NoteDetailController>(
       () => NoteDetailController(isarService: Get.find<IsarService>()),
+    );
+    Get.lazyPut<AudioPlaybackController>(
+      () => AudioPlaybackController(service: Get.find<AudioPlayerService>()),
     );
   }
 }

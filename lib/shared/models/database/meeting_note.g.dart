@@ -17,28 +17,38 @@ const MeetingNoteSchema = CollectionSchema(
   name: r'MeetingNote',
   id: 2992533703364733967,
   properties: {
-    r'createdAt': PropertySchema(
+    r'audioPath': PropertySchema(
       id: 0,
+      name: r'audioPath',
+      type: IsarType.string,
+    ),
+    r'createdAt': PropertySchema(
+      id: 1,
       name: r'createdAt',
       type: IsarType.dateTime,
     ),
+    r'durationSeconds': PropertySchema(
+      id: 2,
+      name: r'durationSeconds',
+      type: IsarType.long,
+    ),
     r'folderId': PropertySchema(
-      id: 1,
+      id: 3,
       name: r'folderId',
       type: IsarType.string,
     ),
     r'tags': PropertySchema(
-      id: 2,
+      id: 4,
       name: r'tags',
       type: IsarType.stringList,
     ),
     r'title': PropertySchema(
-      id: 3,
+      id: 5,
       name: r'title',
       type: IsarType.string,
     ),
     r'transcript': PropertySchema(
-      id: 4,
+      id: 6,
       name: r'transcript',
       type: IsarType.string,
     )
@@ -104,6 +114,12 @@ int _meetingNoteEstimateSize(
 ) {
   var bytesCount = offsets.last;
   {
+    final value = object.audioPath;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
     final value = object.folderId;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
@@ -127,11 +143,13 @@ void _meetingNoteSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeDateTime(offsets[0], object.createdAt);
-  writer.writeString(offsets[1], object.folderId);
-  writer.writeStringList(offsets[2], object.tags);
-  writer.writeString(offsets[3], object.title);
-  writer.writeString(offsets[4], object.transcript);
+  writer.writeString(offsets[0], object.audioPath);
+  writer.writeDateTime(offsets[1], object.createdAt);
+  writer.writeLong(offsets[2], object.durationSeconds);
+  writer.writeString(offsets[3], object.folderId);
+  writer.writeStringList(offsets[4], object.tags);
+  writer.writeString(offsets[5], object.title);
+  writer.writeString(offsets[6], object.transcript);
 }
 
 MeetingNote _meetingNoteDeserialize(
@@ -141,12 +159,14 @@ MeetingNote _meetingNoteDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = MeetingNote();
-  object.createdAt = reader.readDateTime(offsets[0]);
-  object.folderId = reader.readStringOrNull(offsets[1]);
+  object.audioPath = reader.readStringOrNull(offsets[0]);
+  object.createdAt = reader.readDateTime(offsets[1]);
+  object.durationSeconds = reader.readLong(offsets[2]);
+  object.folderId = reader.readStringOrNull(offsets[3]);
   object.id = id;
-  object.tags = reader.readStringList(offsets[2]) ?? [];
-  object.title = reader.readString(offsets[3]);
-  object.transcript = reader.readString(offsets[4]);
+  object.tags = reader.readStringList(offsets[4]) ?? [];
+  object.title = reader.readString(offsets[5]);
+  object.transcript = reader.readString(offsets[6]);
   return object;
 }
 
@@ -158,14 +178,18 @@ P _meetingNoteDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readDateTime(offset)) as P;
-    case 1:
       return (reader.readStringOrNull(offset)) as P;
+    case 1:
+      return (reader.readDateTime(offset)) as P;
     case 2:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readLong(offset)) as P;
     case 3:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 4:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 5:
+      return (reader.readString(offset)) as P;
+    case 6:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -656,6 +680,160 @@ extension MeetingNoteQueryWhere
 extension MeetingNoteQueryFilter
     on QueryBuilder<MeetingNote, MeetingNote, QFilterCondition> {
   QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'audioPath',
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'audioPath',
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'audioPath',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'audioPath',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'audioPath',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioPath',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      audioPathIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'audioPath',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
       createdAtEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -703,6 +881,62 @@ extension MeetingNoteQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
         property: r'createdAt',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      durationSecondsEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'durationSeconds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      durationSecondsGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'durationSeconds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      durationSecondsLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'durationSeconds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterFilterCondition>
+      durationSecondsBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'durationSeconds',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -1418,6 +1652,18 @@ extension MeetingNoteQueryLinks
 
 extension MeetingNoteQuerySortBy
     on QueryBuilder<MeetingNote, MeetingNote, QSortBy> {
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> sortByAudioPath() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioPath', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> sortByAudioPathDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioPath', Sort.desc);
+    });
+  }
+
   QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> sortByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
@@ -1427,6 +1673,19 @@ extension MeetingNoteQuerySortBy
   QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> sortByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> sortByDurationSeconds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'durationSeconds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy>
+      sortByDurationSecondsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'durationSeconds', Sort.desc);
     });
   }
 
@@ -1469,6 +1728,18 @@ extension MeetingNoteQuerySortBy
 
 extension MeetingNoteQuerySortThenBy
     on QueryBuilder<MeetingNote, MeetingNote, QSortThenBy> {
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> thenByAudioPath() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioPath', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> thenByAudioPathDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioPath', Sort.desc);
+    });
+  }
+
   QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> thenByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
@@ -1478,6 +1749,19 @@ extension MeetingNoteQuerySortThenBy
   QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> thenByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy> thenByDurationSeconds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'durationSeconds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QAfterSortBy>
+      thenByDurationSecondsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'durationSeconds', Sort.desc);
     });
   }
 
@@ -1532,9 +1816,23 @@ extension MeetingNoteQuerySortThenBy
 
 extension MeetingNoteQueryWhereDistinct
     on QueryBuilder<MeetingNote, MeetingNote, QDistinct> {
+  QueryBuilder<MeetingNote, MeetingNote, QDistinct> distinctByAudioPath(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'audioPath', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<MeetingNote, MeetingNote, QDistinct> distinctByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'createdAt');
+    });
+  }
+
+  QueryBuilder<MeetingNote, MeetingNote, QDistinct>
+      distinctByDurationSeconds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'durationSeconds');
     });
   }
 
@@ -1574,9 +1872,21 @@ extension MeetingNoteQueryProperty
     });
   }
 
+  QueryBuilder<MeetingNote, String?, QQueryOperations> audioPathProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'audioPath');
+    });
+  }
+
   QueryBuilder<MeetingNote, DateTime, QQueryOperations> createdAtProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'createdAt');
+    });
+  }
+
+  QueryBuilder<MeetingNote, int, QQueryOperations> durationSecondsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'durationSeconds');
     });
   }
 
